@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Règlement - Les Lames de Fer</title>
+
+    <!-- Polices Google -->
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,600;1,400&family=Grenze+Gotisch:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- Fichier CSS principal -->
+    <link rel="stylesheet" href="https://lost-cyrano.github.io/Les-lammes/style.css">
+
+    <style>
+        .regulation-section {
+            margin-bottom: 30px;
+        }
+        .regulation-section .card {
+            border-left-color: var(--rouge-vif);
+        }
+        .article {
+            margin-bottom: 18px;
+            padding-left: 10px;
+            border-left: 2px solid #e0d2c4;
+            padding-bottom: 5px;
+        }
+        .article h3 {
+            font-family: 'EB Garamond', serif;
+            font-weight: 600;
+            font-size: 1.15rem;
+            color: var(--rouge-fonce);
+            margin-bottom: 4px;
+        }
+        .article p {
+            margin-bottom: 0;
+            font-size: 1rem;
+        }
+        .checkbox-container {
+            margin-top: 20px;
+            padding: 15px;
+            background: #f9f5f0;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 600;
+            color: var(--brun-texte);
+            border: 1px solid var(--bordure-claire);
+        }
+        .checkbox-container input[type="checkbox"] {
+            width: 22px;
+            height: 22px;
+            accent-color: var(--rouge-vif);
+            cursor: pointer;
+            flex-shrink: 0;
+        }
+        .btn:disabled {
+            background: #b89a9a;
+            border-color: #b89a9a;
+            cursor: not-allowed;
+            box-shadow: none;
+            opacity: 0.7;
+        }
+        .btn:disabled:hover {
+            background: #b89a9a;
+            border-color: #b89a9a;
+        }
+        .final-section {
+            text-align: center;
+            margin-top: 40px;
+        }
+        #redirect-error {
+            color: var(--rouge-vif);
+            font-weight: 600;
+            margin-top: 10px;
+        }
+    </style>
+
+    <script src="rules-validation.js" defer></script>
+    
+</head>
+<body>
+
+    <!-- En-tête simplifié (pas de nav) -->
+    <header class="site-header">
+        <span class="logo">Les Lames de Fer</span>
+        <p class="subtitle">Groupe de passionnés de combats médiévaux</p>
+    </header>
+
+    <main>
+        <div class="container">
+            <h1>Règlement</h1>
+            <p style="font-size: 1.1rem; margin-bottom: 2rem;">
+                Avant de continuer, lisez et acceptez chaque catégorie du règlement.
+            </p>
+
+            <!-- Catégorie 1 : Règles générales et armes -->
+            <div class="regulation-section">
+                <div class="card">
+                    <h2>1. Règles générales et armes</h2>
+
+                    <div class="article">
+                        <h3>Article 1.1 – Utilisation des armes</h3>
+                        <p>Les participants n'ont le droit d'utiliser que les armes prêtées par l'association lors de l'événement.</p>
+                    </div>
+
+                    <div class="article">
+                        <h3>Article 1.2 – Rounds des combats officiels</h3>
+                        <p>Les combats officiels sont en 5 rounds gagnants.</p>
+                    </div>
+
+                    <div class="article">
+                        <h3>Article 1.3 – Zone de combat</h3>
+                        <p>Les combats officiels se déroulent dans une zone de combat définie en fonction de la catégorie de combat.</p>
+                    </div>
+
+                    <div class="article">
+                        <h3>Article 1.4 – Sortie de zone</h3>
+                        <p>Un appui hors de la zone de combat équivaut à une sortie et fait perdre le round en cours au joueur qui sort.</p>
+                    </div>
+
+                    <div class="article">
+                        <h3>Article 1.5 – Avertissement de passivité</h3>
+                        <p>Un arbitre de plateau peut administrer à un combattant un avertissement de "passivité" afin de réguler la durée des combats et demander à un combattant fuyant ou trop défensif de prendre au sérieux son appellation de "combattant".</p>
+                    </div>
+
+                    <div class="checkbox-container">
+                        <input type="checkbox" id="cat1" class="section-check">
+                        <label for="cat1">J'ai lu, compris et accepté la catégorie 1.</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Catégorie 2 : Responsabilité et engagement -->
+            <div class="regulation-section">
+                <div class="card">
+                    <h2>2. Responsabilité et engagement</h2>
+
+                    <div class="article">
+                        <h3>Article 2.1 – Condition physique et responsabilité</h3>
+                        <p>Tous les participants sont garants de leur propre forme physique. En participant à n'importe quelles activités, ils confirment être en capacité physique pour et prennent leurs pleines responsabilités de toutes blessures potentielles ou autres que nos pratiques pourrait causer.</p>
+                    </div>
+
+                    <div class="article">
+                        <h3>Article 2.2 – Acceptation des risques</h3>
+                        <p>Les participants, en s'inscrivant à un événement, prennent pleinement conscience de la nature de nos activités et se tiennent propres responsables de potentiels coups et blessures ; et admettent également avoir lu, compris et accepté l'intégralité du présent règlement.</p>
+                    </div>
+
+                    <div class="checkbox-container">
+                        <input type="checkbox" id="cat2" class="section-check">
+                        <label for="cat2">J'ai lu, compris et accepté la catégorie 2.</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Catégorie 3 : Nomenclature et catégories de combat -->
+            <div class="regulation-section">
+                <div class="card">
+                    <h2>3. Nomenclature et catégories de combat</h2>
+
+                    <div class="article">
+                        <h3>Article 3.1 – Principe des catégories</h3>
+                        <p>Les combats officiels sont séparés en plusieurs catégories (voir les trois clauses suivantes) en fonction des armes utilisées par les combattants, de leurs nombres et des règles de jeu utilisées, ce qui implique deux clauses supplémentaires.</p>
+                    </div>
+
+                    <div class="article">
+                        <h3>Article 3.2 – Condition de combat</h3>
+                        <p>Deux adversaires ne peuvent se battre qu'à condition de concourir dans la même catégorie d'armes, de nombre et de mode de règles de jeu.</p>
+                    </div>
+
+                    <div class="article">
+                        <h3>Article 3.3 – Résultats officiels</h3>
+                        <p>Les résultats officiels seront séparés pour chaque catégorie, avec, si possible, un podium pour chacune d'entre elles.</p>
+                    </div>
+
+                    <div class="article">
+                        <h3>Article 3.4 – Catégories d'armes</h3>
+                        <p>Les catégories d'armes sont les suivantes : a) Armes courtes et bâtardes ; b) Armes doubles et flexibles ; c) Armes longues et d'hast.</p>
+                    </div>
+
+                    <div class="article">
+                        <h3>Article 3.5 – Catégories de nombre</h3>
+                        <p>Les catégories de nombre sont les suivantes : a) en 1/1 soit le Duel ; b) en 2/2 soit le "Duel en alliance" ; c) en 3/3 soit la Troïka ; d) en 4/4 soit "combat en rang" ; e) en 5/5 soit une Bataille ; f) en +6/+6 (à condition de nombre égal d'adversaires ou d'un accord unanime entre les équipes et l'administration) soit le Massacre.</p>
+                    </div>
+
+                    <div class="article">
+                        <h3>Article 3.6 – Règles de jeu</h3>
+                        <p>Il existe, en plus de ce règlement, différentes règles qui définissent le déroulement d'un combat que l'on appelle règles de jeu, et sont séparées en catégories comme suit.</p>
+                    </div>
+
+                    <div class="article">
+                        <h3>Article 3.7 – Règle Mort subite</h3>
+                        <p>MORT SUBITE : Les combats ne sont pas limités en temps, le premier toucher sur n'importe quelle partie du corps est compté comme mort, la première équipe à ne plus comporter de participant vivant perd le round, le suivant débute rapidement en ne laissant que le temps de se replacer ; un coup à soi-même ou à un allié est compté comme mortel, si deux frappes sont simultanées, seule la première survenue est comptée et les coups du combattant désormais mort sont ignorés, et s'il est impossible de déterminer la plus mortelle, le combat reprend.</p>
+                    </div>
+
+                    <div class="article">
+                        <h3>Article 3.8 – Règle Coup le plus mortel</h3>
+                        <p>COUP LE PLUS MORTEL : Mêmes consignes que pour Mort subite, à l'exception que si deux coups se font simultanément, seul le coup le plus mortel est comptabilisé (exemple : un coup à la tête l'emporte sur un coup au coude).</p>
+                    </div>
+
+                    <div class="article">
+                        <h3>Article 3.9 – Règle Presque réaliste</h3>
+                        <p>PRESQUE RÉALISTE : Mêmes consignes que pour Mort subite, à l'exception que si vous êtes touché, hormis les coups toujours mortels (tête, cou, estoc thoracique), vous pouvez continuer à combattre en handicapant le membre touché à hauteur de la force produite (exemple : un fort coup de tranche sur le bras droit impose de placer celui-ci dans le dos et de ne plus l'utiliser) ; au bout de quatre touches maximum (même éraflure), le combattant est considéré comme mort de douleur ; lorsqu'une blessure saignante (coupe forte, estoc) est causée, un décompte est lancé selon le membre touché, signifiant la perte de sang jusqu'à l'incapacité puis la mort ; quoi qu'il arrive, si pendant ce temps, même handicapé, le combattant arrive à tuer son adversaire, il remporte le round et les deux combattants recommencent le suivant sans conserver leurs blessures (il est du devoir de l'arbitre de plateau de signaler les touches et leur gravité à l'arbitre de table qui gère les comptes et les temps).</p>
+                    </div>
+
+                    <div class="article">
+                        <h3>Article 3.10 – Règle Compte des points</h3>
+                        <p>COMPTE DES POINTS : Les rounds durent deux minutes avec vingt secondes de repos ; l'arbitre de table comptabilise le nombre de touches réalisées par chaque combattant, sauf si les combattants se retrouvent en bourrinage, auquel cas les comptes sont stoppés, un avertissement est administré, et l'arbitre de plateau doit séparer les adversaires avant de relancer le combat aussitôt.</p>
+                    </div>
+
+                    <div class="checkbox-container">
+                        <input type="checkbox" id="cat3" class="section-check">
+                        <label for="cat3">J'ai lu, compris et accepté la catégorie 3.</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Catégorie 4 : Arbitrages et établissement des sanctions -->
+            <div class="regulation-section">
+                <div class="card">
+                    <h2>4. Arbitrages et établissement des sanctions</h2>
+
+                    <div class="article">
+                        <h3>Article 4.1 – Respect de l'administration</h3>
+                        <p>Le respect de l'administration, de l'arbitrage et des décisions prises doit être total. L'association n'est pas un tribunal : une sanction, à condition d'être prise par une responsable (membre du bureau ou arbitre désigné) et de ne pas être fondée sur un jugement discriminatoire, est immédiate, non modifiable et définitive ; sauf voir le point suivant.</p>
+                    </div>
+
+                    <div class="article">
+                        <h3>Article 4.2 – Modification des sanctions par le bureau</h3>
+                        <p>Seul le bureau de l'association, constitué du président, du trésorier et de possibles conseillers, peut, sur la base d'un accord, et à sa convenance, révoquer ou modifier les sanctions posées.</p>
+                    </div>
+
+                    <div class="article">
+                        <h3>Article 4.3 – Échelle des sanctions</h3>
+                        <p>Les sanctions vont, dans l'ordre croissant, de : Avertissement, Admonition, Forfait, Disqualification, Exclusion temporaire, Exclusion définitive.</p>
+                    </div>
+
+                    <div class="article">
+                        <h3>Article 4.4 – Non-remboursement et absence de préavis</h3>
+                        <p>Aucune sanction ne peut faire l'objet d'un remboursement et ne nécessite pas de préavis.</p>
+                    </div>
+
+                    <div class="article">
+                        <h3>Article 4.5 – Composition minimale de l'arbitrage</h3>
+                        <p>Un combat nécessite au minimum 2 arbitres : un arbitre dit de "plateau" et un arbitre dit de "table".</p>
+                    </div>
+
+                    <div class="article">
+                        <h3>Article 4.6 – Position des arbitres</h3>
+                        <p>L'arbitre de table est hors de la zone de combat et l'arbitre de plateau doit être sur la zone de combat mais mobile de façon à ne pas gêner celui-ci.</p>
+                    </div>
+
+                    <div class="article">
+                        <h3>Article 4.7 – Rôles de l'arbitre de table</h3>
+                        <p>L'arbitre de table a pour rôles de comptabiliser les points, les avertissements, les sorties et les admonitions de chaque camp.</p>
+                    </div>
+
+                    <div class="article">
+                        <h3>Article 4.8 – Attribution des victoires par l'arbitre de table</h3>
+                        <p>L'arbitre de table attribue les victoires de rounds et de combats en fonction des règles de jeu de la catégorie et du règlement.</p>
+                    </div>
+
+                    <div class="article">
+                        <h3>Article 4.9 – Rôles de l'arbitre de plateau</h3>
+                        <p>L'arbitre de plateau a pour rôles d'assurer la sécurité et la bonne continuité des combats en lançant les rounds, les stoppant, et en attribuant des avertissements, des sorties ou des admonitions.</p>
+                    </div>
+
+                    <div class="article">
+                        <h3>Article 4.10 – Conformité par l'arbitre de plateau</h3>
+                        <p>L'arbitre de plateau se charge de la conformité des tenues, des mœurs et des armes des combattants.</p>
+                    </div>
+
+                    <div class="checkbox-container">
+                        <input type="checkbox" id="cat4" class="section-check">
+                        <label for="cat4">J'ai lu, compris et accepté la catégorie 4.</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Catégorie 5 : Coups interdits en combat -->
+            <div class="regulation-section">
+                <div class="card">
+                    <h2>5. Coups interdits en combat</h2>
+
+                    <div class="article">
+                        <h3>Article 5.1 – Interdiction des KO et recherche de blessure</h3>
+                        <p>Les KO ou les recherches de blessure sont totalement proscrits et sont passibles d'une sanction allant jusqu'à l'exclusion définitive.</p>
+                    </div>
+
+                    <div class="article">
+                        <h3>Article 5.2 – Estoc au-dessus des épaules</h3>
+                        <p>Les coups d'estoc au-dessus des épaules sont passibles d'une admonition.</p>
+                    </div>
+
+                    <div class="article">
+                        <h3>Article 5.3 – Estoc entre ceinture et genoux</h3>
+                        <p>Les coups d'estoc en dessous de la ceinture et au-dessus des genoux sont passibles d'une admonition.</p>
+                    </div>
+
+                    <div class="article">
+                        <h3>Article 5.4 – Estoc dans la poitrine d'une femme</h3>
+                        <p>Les coups d'estoc dans la poitrine d'une femme sont passibles d'une admonition.</p>
+                    </div>
+
+                    <div class="article">
+                        <h3>Article 5.5 – Coup de tranche au visage</h3>
+                        <p>Les coups de tranche au visage sont passibles d'une admonition.</p>
+                    </div>
+
+                    <div class="article">
+                        <h3>Article 5.6 – Toucher un arbitre</h3>
+                        <p>Il est interdit et passible d'une admonition de toucher, même sans faire exprès, un arbitre avec son arme (les arbitres devant évidemment faire en sorte de ne pas gêner les combats et de ne s'interposer que pour stopper un combat).</p>
+                    </div>
+
+                    <div class="checkbox-container">
+                        <input type="checkbox" id="cat5" class="section-check">
+                        <label for="cat5">J'ai lu, compris et accepté la catégorie 5.</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Catégorie 6 : Applications des sanctions -->
+            <div class="regulation-section">
+                <div class="card">
+                    <h2>6. Applications des sanctions</h2>
+
+                    <div class="article">
+                        <h3>Article 6.1 – Effet d'une admonition</h3>
+                        <p>Au bout de 1 admonition, le combattant perd automatiquement son round.</p>
+                    </div>
+
+                    <div class="article">
+                        <h3>Article 6.2 – Effet de deux admonitions</h3>
+                        <p>Au bout de 2 admonitions, le combattant perd son combat par forfait.</p>
+                    </div>
+
+                    <div class="article">
+                        <h3>Article 6.3 – Effet de trois admonitions</h3>
+                        <p>Au bout de 3 admonitions, le combattant est disqualifié.</p>
+                    </div>
+
+                    <div class="article">
+                        <h3>Article 6.4 – Conversion des avertissements</h3>
+                        <p>3 avertissements valent une admonition.</p>
+                    </div>
+
+                    <div class="article">
+                        <h3>Article 6.5 – Réinitialisation des avertissements</h3>
+                        <p>Les avertissements sont propres à un combat et sont remis à zéro entre eux.</p>
+                    </div>
+
+                    <div class="article">
+                        <h3>Article 6.6 – Réinitialisation des admonitions</h3>
+                        <p>Les admonitions sont propres à chaque événement et sont remises à zéro entre eux.</p>
+                    </div>
+
+                    <div class="checkbox-container">
+                        <input type="checkbox" id="cat6" class="section-check">
+                        <label for="cat6">J'ai lu, compris et accepté la catégorie 6.</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bouton final -->
+            <div class="final-section">
+                <button id="accept-all" class="btn btn-lg" disabled>
+                    J'ai lu et j'accepte l'intégralité du règlement
+                </button>
+                <p id="redirect-error" class="hidden">Veuillez cocher toutes les catégories avant de continuer.</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Pied de page -->
+    <footer class="site-footer">
+        <p>© 2026 Les Lames de Fer — Site réalisé par Anael</p>
+    </footer>
+</body>
+</html>
