@@ -12,342 +12,501 @@
     <link rel="stylesheet" href="https://lost-cyrano.github.io/Les-lammes/style.css">
 
     <style>
-        /* --- Styles spécifiques à la page de paiement --- */
-        .payment-container {
-            max-width: 750px;
-            margin: 0 auto;
-        }
-        .payment-option {
-            margin-bottom: 20px;
-        }
-        .payment-option .card {
-            cursor: pointer;
-            transition: all 0.25s;
-            border-left: 6px solid var(--bordure-claire);
-        }
-        .payment-option .card:hover {
-            border-left-color: var(--rouge-vif);
-            box-shadow: 0 10px 22px rgba(139,58,58,0.12);
-        }
-        .payment-option.selected .card {
-            border-left-color: var(--rouge-vif);
-            background: #fef9f5;
-            box-shadow: 0 8px 20px rgba(139,58,58,0.18);
-        }
-        .payment-option input[type="radio"] {
-            display: none;
-        }
-        .option-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-        .option-name {
-            font-family: 'Grenze Gotisch', cursive;
-            font-size: 1.5rem;
-            color: var(--rouge-fonce);
-        }
-        .option-price {
-            font-family: 'Grenze Gotisch', cursive;
-            font-size: 1.5rem;
-            color: var(--rouge-vif);
-            background: #fdf2f2;
-            padding: 5px 14px;
-            border-radius: 20px;
-        }
-        .option-detail {
-            font-size: 0.95rem;
-            color: var(--brun-texte);
-            margin-top: 8px;
-        }
-        .selected-indicator {
-            font-size: 0.85rem;
-            color: var(--rouge-vif);
-            font-weight: 600;
-            margin-top: 8px;
-            display: none;
-        }
-        .payment-option.selected .selected-indicator {
-            display: block;
+        :root {
+            --rouge-fonce: #6b2e2e;
+            --rouge-vif: #8b3a3a;
+            --rouge-hover: #a04848;
+            --beige-clair: #fdf7f2;
+            --beige-fond: #f5f2e9;
+            --beige-carte: #fffef9;
+            --brun-doux: #947a6d;
+            --brun-texte: #5a4a44;
+            --brun-fonce: #3b2b2b;
+            --footer-bg: #e5d9ce;
+            --bordure-claire: #d4c4b7;
+            --or-doux: #c9a96e;
         }
 
-        /* Récapitulatif */
-        .summary {
-            background: var(--beige-carte);
-            border: 1px solid var(--bordure-claire);
-            border-radius: 6px;
-            padding: 25px;
-            margin-top: 30px;
-            box-shadow: 0 6px 16px rgba(0,0,0,0.04);
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-        .summary h2 {
-            margin-top: 0;
+
+        body {
+            background: #f5f2e9;
+            background-image: url("data:image/svg+xml,%3Csvg width='30' height='30' viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='5' cy='5' r='2.2' fill='none' stroke='%23947a6d' stroke-opacity='0.2' stroke-width='0.8'/%3E%3Ccircle cx='20' cy='5' r='2.2' fill='none' stroke='%23947a6d' stroke-opacity='0.2' stroke-width='0.8'/%3E%3Ccircle cx='5' cy='20' r='2.2' fill='none' stroke='%23947a6d' stroke-opacity='0.2' stroke-width='0.8'/%3E%3Ccircle cx='20' cy='20' r='2.2' fill='none' stroke='%23947a6d' stroke-opacity='0.2' stroke-width='0.8'/%3E%3C/svg%3E");
+            font-family: 'EB Garamond', serif;
+            color: #3b2b2b;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            padding: 20px;
         }
-        .summary-line {
+
+        /* ---- CARTE PRINCIPALE ---- */
+        .payment-card {
+            background: #ffffff;
+            max-width: 680px;
+            width: 100%;
+            margin: 20px auto 40px;
+            border-radius: 12px;
+            box-shadow: 0 16px 40px rgba(60, 40, 30, 0.12), 0 4px 12px rgba(0,0,0,0.05);
+            border: 1px solid #ddd0c0;
+            overflow: hidden;
+        }
+
+        .payment-header {
+            background: linear-gradient(135deg, #6b2e2e 0%, #8b3a3a 100%);
+            padding: 30px 30px 25px;
+            text-align: center;
+            color: #fdf7f2;
+            position: relative;
+        }
+
+        .payment-header::after {
+            content: '';
+            position: absolute;
+            bottom: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 24px;
+            background: #ffffff;
+            border-radius: 50%;
+            box-shadow: inset 0 2px 6px rgba(0,0,0,0.08);
+        }
+
+        .payment-header .logo {
+            font-family: 'Grenze Gotisch', cursive;
+            font-size: 2.4rem;
+            letter-spacing: 4px;
+            color: #f5d7a7;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+        }
+
+        .payment-header .subtitle {
+            font-size: 1rem;
+            color: #e8d5c4;
+            letter-spacing: 3px;
+            margin-top: 4px;
+        }
+
+        .payment-body {
+            padding: 35px 30px 30px;
+        }
+
+        .payment-body h2 {
+            font-family: 'Grenze Gotisch', cursive;
+            font-size: 1.7rem;
+            color: #6b2e2e;
+            margin-bottom: 8px;
+            letter-spacing: 2px;
+            border-bottom: 2px solid #f0e4d4;
+            padding-bottom: 8px;
+        }
+
+        .payment-body .intro {
+            color: #5a4a44;
+            margin-bottom: 25px;
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+
+        /* ---- OPTIONS DE PAIEMENT ---- */
+        .option-group {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin-bottom: 30px;
+        }
+
+        .option-card {
+            position: relative;
+            display: flex;
+            align-items: center;
+            background: #fefcf8;
+            border: 2px solid #e5d9c5;
+            border-radius: 10px;
+            padding: 18px 20px;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            gap: 16px;
+        }
+
+        .option-card:hover {
+            border-color: #c9a96e;
+            box-shadow: 0 4px 18px rgba(139, 58, 58, 0.08);
+        }
+
+        .option-card.selected {
+            border-color: #8b3a3a;
+            background: #fef9f5;
+            box-shadow: 0 6px 22px rgba(139, 58, 58, 0.12);
+        }
+
+        .option-card.disabled {
+            opacity: 0.55;
+            cursor: not-allowed;
+            pointer-events: none;
+            filter: grayscale(30%);
+            background: #f9f6f0;
+        }
+
+        .option-card .radio-circle {
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            border: 2px solid #c4b292;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.2s;
+        }
+
+        .option-card.selected .radio-circle {
+            border-color: #8b3a3a;
+            background: #8b3a3a;
+        }
+
+        .option-card.selected .radio-circle::after {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: #fff;
+            border-radius: 50%;
+        }
+
+        .option-card .option-content {
+            flex: 1;
+        }
+
+        .option-card .option-name {
+            font-family: 'Grenze Gotisch', cursive;
+            font-size: 1.3rem;
+            color: #6b2e2e;
+            letter-spacing: 1px;
+        }
+
+        .option-card .option-desc {
+            font-size: 0.92rem;
+            color: #7a6b5c;
+            margin-top: 3px;
+        }
+
+        .option-card .option-price {
+            font-family: 'Grenze Gotisch', cursive;
+            font-size: 1.5rem;
+            color: #8b3a3a;
+            background: #fdf2f2;
+            padding: 6px 16px;
+            border-radius: 25px;
+            white-space: nowrap;
+            letter-spacing: 1px;
+        }
+
+        .option-card .locked-badge {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #947a6d;
+            margin-top: 6px;
+            font-family: 'EB Garamond', serif;
+        }
+
+        .option-card .locked-badge::before {
+            content: '🔒';
+        }
+
+        /* ---- EMAIL ---- */
+        .email-field {
+            margin-bottom: 25px;
+            background: #fefcf8;
+            border: 1px solid #e5d9c5;
+            border-radius: 10px;
+            padding: 20px;
+        }
+
+        .email-field label {
+            display: block;
+            font-weight: 600;
+            color: #5a4a44;
+            margin-bottom: 8px;
+            font-size: 1rem;
+            letter-spacing: 0.5px;
+        }
+
+        .email-field input {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid #e5d9c5;
+            border-radius: 8px;
+            font-family: 'EB Garamond', serif;
+            font-size: 1.05rem;
+            background: #fffef9;
+            transition: 0.25s;
+        }
+
+        .email-field input:focus {
+            outline: none;
+            border-color: #8b3a3a;
+            box-shadow: 0 0 0 4px rgba(139, 58, 58, 0.08);
+        }
+
+        .email-error {
+            color: #c0392b;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-top: 6px;
+            display: none;
+        }
+
+        /* ---- RÉCAPITULATIF ---- */
+        .summary-box {
+            background: #fdf9f3;
+            border: 1px solid #e5d9c5;
+            border-radius: 10px;
+            padding: 20px 22px;
+            margin-bottom: 25px;
+            display: none;
+        }
+
+        .summary-box .summary-row {
             display: flex;
             justify-content: space-between;
+            align-items: baseline;
             padding: 8px 0;
-            border-bottom: 1px dotted var(--bordure-claire);
+            border-bottom: 1px dotted #ddd0c0;
             font-size: 1rem;
-            color: var(--brun-texte);
         }
-        .summary-line.total {
-            font-weight: 700;
-            font-size: 1.2rem;
-            color: var(--rouge-fonce);
+        .summary-box .summary-row:last-child {
             border-bottom: none;
-            margin-top: 10px;
-            font-family: 'Grenze Gotisch', cursive;
         }
-        .summary-line.tax {
-            font-size: 0.9rem;
+        .summary-box .summary-row.total {
+            font-weight: 700;
+            font-size: 1.3rem;
+            color: #6b2e2e;
+            font-family: 'Grenze Gotisch', cursive;
+            letter-spacing: 1px;
+            margin-top: 4px;
+        }
+        .summary-box .summary-row.tax {
+            font-size: 0.92rem;
             color: #7a6b5c;
         }
 
-        /* Email */
-        .email-section {
-            margin-top: 25px;
+        /* ---- BOUTON ---- */
+        .btn-pay {
+            display: block;
+            width: 100%;
+            background: linear-gradient(135deg, #6b2e2e 0%, #8b3a3a 100%);
+            color: #fff;
+            font-family: 'Grenze Gotisch', cursive;
+            font-size: 1.4rem;
+            letter-spacing: 3px;
+            padding: 16px 24px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            box-shadow: 0 6px 18px rgba(107, 46, 46, 0.25);
         }
 
-        /* Bouton final */
-        .payment-submit {
+        .btn-pay:hover:not(:disabled) {
+            background: linear-gradient(135deg, #7d3838 0%, #a04848 100%);
+            box-shadow: 0 10px 28px rgba(107, 46, 46, 0.35);
+            transform: translateY(-1px);
+        }
+
+        .btn-pay:disabled {
+            background: #c9bfb2;
+            box-shadow: none;
+            cursor: not-allowed;
+            color: #e8e3da;
+        }
+
+        /* ---- FOOTER ---- */
+        .site-footer {
             text-align: center;
-            margin-top: 30px;
-        }
-        #email-error {
-            color: var(--rouge-vif);
-            font-weight: 600;
-            margin-top: 8px;
-            font-size: 0.9rem;
+            padding: 18px;
+            color: #8b7d6e;
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+            width: 100%;
+            margin-top: auto;
         }
 
-        /* Responsive */
-        @media (max-width: 600px) {
-            .option-header {
-                flex-direction: column;
-                align-items: flex-start;
+        @media (max-width: 550px) {
+            .option-card {
+                flex-wrap: wrap;
+            }
+            .option-card .option-price {
+                margin-left: 38px;
+                margin-top: 6px;
+            }
+            .payment-body {
+                padding: 20px 18px;
             }
         }
     </style>
 </head>
 <body>
 
-    <!-- En-tête du site -->
-    <header class="site-header">
-        <span class="logo">Les Lames de Fer</span>
-        <p class="subtitle">Groupe de passionnés de combats médiévaux</p>
-    </header>
+    <div class="payment-card">
 
-    <!-- Navigation -->
-    <nav class="main-nav">
-        <ul>
-            <li><a href="index.html">Accueil</a></li>
-            <li><a href="evenements.html">Événements</a></li>
-            <li><a href="adhesion.html">Adhésion</a></li>
-            <li><a href="reglements.html">Règlements</a></li>
-            <li><a href="galerie.html">Galerie</a></li>
-            <li><a href="contact.html">Contact</a></li>
-        </ul>
-    </nav>
+        <!-- En-tête -->
+        <div class="payment-header">
+            <div class="logo">Les Lames de Fer</div>
+            <div class="subtitle">Paiement sécurisé</div>
+        </div>
 
-    <main>
-        <div class="container">
-            <h1>Paiement</h1>
-            <p style="font-size: 1.1rem; margin-bottom: 1.5rem;">
-                Choisissez votre formule et validez votre inscription à l'événement.
+        <!-- Corps -->
+        <div class="payment-body">
+            <h2>Inscription à l'événement</h2>
+            <p class="intro">
+                Choisissez votre formule et procédez au règlement.<br>
+                Tous les prix sont indiqués <strong>hors taxes</strong>. Une taxe de <strong>10 %</strong> (Dodo Payment) sera ajoutée au total.
             </p>
 
-            <div class="payment-container">
+            <!-- Options -->
+            <div class="option-group" id="option-group">
 
-                <!-- Option 1 : Non-adhérent -->
-                <label class="payment-option" for="option-non-adherent">
-                    <input type="radio" name="payment" id="option-non-adherent" value="35" data-label="Non-adhérent">
-                    <div class="card">
-                        <div class="option-header">
-                            <span class="option-name">Non-adhérent</span>
-                            <span class="option-price">35,00 €</span>
-                        </div>
-                        <p class="option-detail">Prix de l'événement pour les participants non-adhérents.</p>
-                        <span class="selected-indicator">✓ Option sélectionnée</span>
+                <!-- Première participation + événement (35 €) - disponible -->
+                <div class="option-card" data-value="35" data-label="Première participation + Événement" data-key="first">
+                    <div class="radio-circle"></div>
+                    <div class="option-content">
+                        <div class="option-name">Première participation + Événement</div>
+                        <div class="option-desc">Adhésion (30 €) + participation à l'événement (5 €)</div>
                     </div>
-                </label>
-
-                <!-- Option 2 : Adhérent -->
-                <label class="payment-option" for="option-adherent">
-                    <input type="radio" name="payment" id="option-adherent" value="5" data-label="Adhérent">
-                    <div class="card">
-                        <div class="option-header">
-                            <span class="option-name">Adhérent</span>
-                            <span class="option-price">5,00 €</span>
-                        </div>
-                        <p class="option-detail">Tarif réduit pour les membres ayant déjà adhéré.</p>
-                        <span class="selected-indicator">✓ Option sélectionnée</span>
-                    </div>
-                </label>
-
-                <!-- Option 3 : Adhésion + Événement -->
-                <label class="payment-option" for="option-adhesion-evenement">
-                    <input type="radio" name="payment" id="option-adhesion-evenement" value="35" data-label="Adhésion + Événement">
-                    <div class="card">
-                        <div class="option-header">
-                            <span class="option-name">Adhésion + Événement</span>
-                            <span class="option-price">35,00 €</span>
-                        </div>
-                        <p class="option-detail">Adhésion (30 €) + participation à l'événement (5 €).</p>
-                        <span class="selected-indicator">✓ Option sélectionnée</span>
-                    </div>
-                </label>
-
-                <!-- Email de facturation -->
-                <div class="email-section">
-                    <div class="card">
-                        <h2>Email de facturation</h2>
-                        <div class="form-group" style="margin-bottom: 0;">
-                            <label for="billing-email">Adresse email pour la réception de la facture :</label>
-                            <input type="email" id="billing-email" placeholder="votre@email.com" required>
-                            <p id="email-error" class="hidden">Veuillez renseigner une adresse email valide.</p>
-                        </div>
-                    </div>
+                    <div class="option-price">35,00 €</div>
                 </div>
 
-                <!-- Récapitulatif -->
-                <div class="summary" id="summary" style="display: none;">
-                    <h2>Récapitulatif de la commande</h2>
-                    <div class="summary-line">
-                        <span id="summary-label">Option</span>
-                        <span id="summary-base">0,00 €</span>
+                <!-- Événement seul (5 €) - réservé aux habitués -->
+                <div class="option-card disabled" data-value="5" data-label="Événement seul" data-key="returning">
+                    <div class="radio-circle"></div>
+                    <div class="option-content">
+                        <div class="option-name">Événement seul</div>
+                        <div class="option-desc">Tarif réservé aux participants habitués</div>
+                        <div class="locked-badge">Accessible après votre première participation</div>
                     </div>
-                    <div class="summary-line tax">
-                        <span>Taxes Dodo Payment (10 %)</span>
-                        <span id="summary-tax">0,00 €</span>
-                    </div>
-                    <div class="summary-line total">
-                        <span>Total TTC</span>
-                        <span id="summary-total">0,00 €</span>
-                    </div>
+                    <div class="option-price">5,00 €</div>
                 </div>
 
-                <!-- Bouton de paiement -->
-                <div class="payment-submit">
-                    <button id="pay-button" class="btn btn-lg" disabled>
-                        Payer avec Dodo Payment
-                    </button>
+            </div>
+
+            <!-- Email -->
+            <div class="email-field">
+                <label for="billing-email">Adresse email de facturation</label>
+                <input type="email" id="billing-email" placeholder="exemple@email.com" autocomplete="email">
+                <div class="email-error" id="email-error">Veuillez saisir une adresse email valide.</div>
+            </div>
+
+            <!-- Récapitulatif -->
+            <div class="summary-box" id="summary">
+                <div class="summary-row">
+                    <span id="summary-label">—</span>
+                    <span id="summary-base">—</span>
+                </div>
+                <div class="summary-row tax">
+                    <span>Taxe Dodo Payment (10 %)</span>
+                    <span id="summary-tax">—</span>
+                </div>
+                <div class="summary-row total">
+                    <span>Total TTC</span>
+                    <span id="summary-total">—</span>
                 </div>
             </div>
-        </div>
-    </main>
 
-    <!-- Pied de page -->
+            <!-- Bouton -->
+            <button id="pay-button" class="btn-pay" disabled>
+                Payer avec Dodo Payment
+            </button>
+        </div>
+    </div>
+
     <footer class="site-footer">
-        <p>© 2026 Les Lames de Fer — Site réalisé par Anael</p>
+        © 2026 Les Lames de Fer — Site réalisé par Anael
     </footer>
 
-    <!-- Script de gestion du paiement -->
     <script>
         (function() {
             'use strict';
 
-            // --- Éléments du DOM ---
-            const radioButtons = document.querySelectorAll('input[name="payment"]');
-            const paymentOptions = document.querySelectorAll('.payment-option');
+            const TAX_RATE = 0.10;
+
+            const optionCards = document.querySelectorAll('.option-card:not(.disabled)');
             const emailInput = document.getElementById('billing-email');
             const emailError = document.getElementById('email-error');
             const payButton = document.getElementById('pay-button');
-            const summaryDiv = document.getElementById('summary');
+            const summaryBox = document.getElementById('summary');
             const summaryLabel = document.getElementById('summary-label');
             const summaryBase = document.getElementById('summary-base');
             const summaryTax = document.getElementById('summary-tax');
             const summaryTotal = document.getElementById('summary-total');
 
-            const TAX_RATE = 0.10; // 10% Dodo Payment
-
             let selectedValue = null;
             let selectedLabel = '';
 
-            // --- Fonction pour formater un montant en euros ---
             function formatEuro(amount) {
                 return amount.toFixed(2).replace('.', ',') + ' €';
             }
 
-            // --- Mise à jour du récapitulatif ---
+            function validateEmail(email) {
+                return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+            }
+
             function updateSummary() {
                 if (!selectedValue) {
-                    summaryDiv.style.display = 'none';
+                    summaryBox.style.display = 'none';
                     return;
                 }
-
                 const baseHT = parseFloat(selectedValue);
                 const taxAmount = baseHT * TAX_RATE;
                 const totalTTC = baseHT + taxAmount;
 
-                summaryLabel.textContent = selectedLabel;
-                summaryBase.textContent = formatEuro(baseHT) + ' HT';
+                summaryLabel.textContent = selectedLabel + ' (HT)';
+                summaryBase.textContent = formatEuro(baseHT);
                 summaryTax.textContent = formatEuro(taxAmount);
                 summaryTotal.textContent = formatEuro(totalTTC);
-
-                summaryDiv.style.display = 'block';
+                summaryBox.style.display = 'block';
             }
 
-            // --- Validation de l'email ---
-            function validateEmail(email) {
-                const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                return re.test(email);
-            }
-
-            // --- Mise à jour de l'état du bouton ---
             function updateButtonState() {
                 const emailValid = validateEmail(emailInput.value.trim());
                 const optionSelected = selectedValue !== null;
 
-                // Gestion de l'erreur email
-                if (emailInput.value.trim() !== '' && !emailValid) {
-                    emailError.classList.remove('hidden');
-                } else {
-                    emailError.classList.add('hidden');
-                }
-
+                emailError.style.display = (emailInput.value.trim() !== '' && !emailValid) ? 'block' : 'none';
                 payButton.disabled = !(optionSelected && emailValid);
             }
 
-            // --- Écouteurs sur les options de paiement ---
-            radioButtons.forEach(function(radio) {
-                radio.addEventListener('change', function() {
-                    // Retire la classe selected de toutes les options
-                    paymentOptions.forEach(function(opt) {
-                        opt.classList.remove('selected');
-                    });
-
-                    if (radio.checked) {
-                        // Ajoute la classe selected à l'option choisie
-                        const parentOption = radio.closest('.payment-option');
-                        if (parentOption) {
-                            parentOption.classList.add('selected');
-                        }
-
-                        selectedValue = radio.value;
-                        selectedLabel = radio.getAttribute('data-label');
-                        updateSummary();
-                        updateButtonState();
-                    }
+            // Sélection des options (uniquement celles qui ne sont pas disabled)
+            optionCards.forEach(function(card) {
+                card.addEventListener('click', function() {
+                    // Retirer la sélection partout
+                    optionCards.forEach(c => c.classList.remove('selected'));
+                    // Sélectionner celle-ci
+                    card.classList.add('selected');
+                    selectedValue = card.getAttribute('data-value');
+                    selectedLabel = card.getAttribute('data-label');
+                    updateSummary();
+                    updateButtonState();
                 });
             });
 
-            // --- Écouteur sur l'email ---
-            emailInput.addEventListener('input', function() {
-                updateButtonState();
-            });
+            emailInput.addEventListener('input', updateButtonState);
 
-            // --- Action sur le bouton de paiement ---
             payButton.addEventListener('click', function() {
-                if (payButton.disabled) {
-                    return;
-                }
+                if (payButton.disabled) return;
 
                 const email = emailInput.value.trim();
                 if (!validateEmail(email)) {
-                    emailError.classList.remove('hidden');
+                    emailError.style.display = 'block';
                     return;
                 }
 
@@ -355,9 +514,7 @@
                 const taxAmount = baseHT * TAX_RATE;
                 const totalTTC = baseHT + taxAmount;
 
-                // Construction de l'URL Dodo Payment
-                // Adapte les paramètres selon la documentation de Dodo Payment
-                const paymentUrl = new URL('https://payment.dodo.com/pay'); // URL à adapter
+                const paymentUrl = new URL('https://payment.dodo.com/pay');
                 paymentUrl.searchParams.append('amount', totalTTC.toFixed(2));
                 paymentUrl.searchParams.append('currency', 'EUR');
                 paymentUrl.searchParams.append('description', selectedLabel + ' - Les Lames de Fer');
@@ -365,15 +522,12 @@
                 paymentUrl.searchParams.append('tax', taxAmount.toFixed(2));
                 paymentUrl.searchParams.append('tax_rate', (TAX_RATE * 100).toFixed(0));
 
-                // Redirection vers Dodo Payment
                 window.location.href = paymentUrl.toString();
             });
 
-            // --- Sélection par défaut : Non-adhérent ---
-            const defaultRadio = document.getElementById('option-non-adherent');
-            if (defaultRadio) {
-                defaultRadio.checked = true;
-                defaultRadio.dispatchEvent(new Event('change'));
+            // Sélection par défaut : première option disponible
+            if (optionCards.length > 0) {
+                optionCards[0].click();
             }
 
         })();
