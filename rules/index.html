@@ -63,6 +63,27 @@
             line-height: 1.4;
         }
         
+        /* Sous-articles (3.1.1, 3.1.2, etc.) */
+        .subarticle {
+            margin-left: 20px;
+            margin-top: 12px;
+            margin-bottom: 12px;
+            padding-left: 10px;
+            border-left: 1px solid #e0d2c4;
+        }
+        .subarticle h4 {
+            font-family: 'EB Garamond', serif;
+            font-weight: 600;
+            font-size: 1rem;
+            color: var(--rouge-fonce);
+            margin-bottom: 4px;
+            margin-top: 0;
+        }
+        .subarticle p {
+            margin-bottom: 0;
+            font-size: 0.95rem;
+        }
+        
         .checkbox-container {
             margin-top: 20px;
             padding: 15px;
@@ -192,22 +213,22 @@
                     <h2>3. Nomenclature et catégories de combat</h2>
 
                     <div class="article">
-                        <h3>Article 3.1 – Principe des catégories</h3>
-                        <p>Les combats officiels sont séparés en plusieurs catégories (voir les trois clauses suivantes) en fonction des armes utilisées par les combattants, de leurs nombres et des règles de jeu utilisées, ce qui implique deux clauses supplémentaires.</p>
+                        <h3>Article 3.1 – Principes généraux</h3>
+                        <p>Les combats officiels sont séparés en plusieurs catégories (voir les clauses suivantes) en fonction des armes utilisées par les combattants, de leurs nombres et des règles de jeu utilisées.</p>
+                        
+                        <div class="subarticle">
+                            <h4>3.1.1 – Condition de combat</h4>
+                            <p>Deux adversaires ne peuvent se battre qu'à condition de concourir dans la même catégorie d'armes, de nombre et de mode de règles de jeu.</p>
+                        </div>
+                        
+                        <div class="subarticle">
+                            <h4>3.1.2 – Résultats officiels</h4>
+                            <p>Les résultats officiels seront séparés pour chaque catégorie, avec, si possible, un podium pour chacune d'entre elles.</p>
+                        </div>
                     </div>
 
                     <div class="article">
-                        <h3>Article 3.2 – Condition de combat</h3>
-                        <p>Deux adversaires ne peuvent se battre qu'à condition de concourir dans la même catégorie d'armes, de nombre et de mode de règles de jeu.</p>
-                    </div>
-
-                    <div class="article">
-                        <h3>Article 3.3 – Résultats officiels</h3>
-                        <p>Les résultats officiels seront séparés pour chaque catégorie, avec, si possible, un podium pour chacune d'entre elles.</p>
-                    </div>
-
-                    <div class="article">
-                        <h3>Article 3.4 – Catégories d'armes</h3>
+                        <h3>Article 3.2 – Catégories d'armes</h3>
                         <p>Les catégories d'armes sont les suivantes :</p>
                         <div class="subclauses">
                             <div class="subclause-item">
@@ -226,7 +247,7 @@
                     </div>
 
                     <div class="article">
-                        <h3>Article 3.5 – Catégories de nombre</h3>
+                        <h3>Article 3.3 – Catégories de nombre</h3>
                         <p>Les catégories de nombre sont les suivantes :</p>
                         <div class="subclauses">
                             <div class="subclause-item">
@@ -257,28 +278,28 @@
                     </div>
 
                     <div class="article">
-                        <h3>Article 3.6 – Règles de jeu</h3>
-                        <p>Il existe, en plus de ce règlement, différentes règles qui définissent le déroulement d'un combat que l'on appelle règles de jeu, et sont séparées en catégories comme suit.</p>
-                    </div>
-
-                    <div class="article">
-                        <h3>Article 3.7 – Règle Mort subite</h3>
-                        <p>MORT SUBITE : Les combats ne sont pas limités en temps, le premier toucher sur n'importe quelle partie du corps est compté comme mort, la première équipe à ne plus comporter de participant vivant perd le round, le suivant débute rapidement en ne laissant que le temps de se replacer ; un coup à soi-même ou à un allié est compté comme mortel, si deux frappes sont simultanées, seule la première survenue est comptée et les coups du combattant désormais mort sont ignorés, et s'il est impossible de déterminer la plus mortelle, le combat reprend.</p>
-                    </div>
-
-                    <div class="article">
-                        <h3>Article 3.8 – Règle Coup le plus mortel</h3>
-                        <p>COUP LE PLUS MORTEL : Mêmes consignes que pour Mort subite, à l'exception que si deux coups se font simultanément, seul le coup le plus mortel est comptabilisé (exemple : un coup à la tête l'emporte sur un coup au coude).</p>
-                    </div>
-
-                    <div class="article">
-                        <h3>Article 3.9 – Règle Presque réaliste</h3>
-                        <p>PRESQUE RÉALISTE : Mêmes consignes que pour Mort subite, à l'exception que si vous êtes touché, hormis les coups toujours mortels (tête, cou, estoc thoracique), vous pouvez continuer à combattre en handicapant le membre touché à hauteur de la force produite (exemple : un fort coup de tranche sur le bras droit impose de placer celui-ci dans le dos et de ne plus l'utiliser) ; au bout de quatre touches maximum (même éraflure), le combattant est considéré comme mort de douleur ; lorsqu'une blessure saignante (coupe forte, estoc) est causée, un décompte est lancé selon le membre touché, signifiant la perte de sang jusqu'à l'incapacité puis la mort ; quoi qu'il arrive, si pendant ce temps, même handicapé, le combattant arrive à tuer son adversaire, il remporte le round et les deux combattants recommencent le suivant sans conserver leurs blessures (il est du devoir de l'arbitre de plateau de signaler les touches et leur gravité à l'arbitre de table qui gère les comptes et les temps).</p>
-                    </div>
-
-                    <div class="article">
-                        <h3>Article 3.10 – Règle Compte des points</h3>
-                        <p>COMPTE DES POINTS : Les rounds durent deux minutes avec vingt secondes de repos ; l'arbitre de table comptabilise le nombre de touches réalisées par chaque combattant, sauf si les combattants se retrouvent en bourrinage, auquel cas les comptes sont stoppés, un avertissement est administré, et l'arbitre de plateau doit séparer les adversaires avant de relancer le combat aussitôt.</p>
+                        <h3>Article 3.4 – Règles de jeu</h3>
+                        <p>Il existe, en plus de ce règlement, différentes règles qui définissent le déroulement d'un combat que l'on appelle règles de jeu.</p>
+                        
+                        <div class="subarticle">
+                            <h4>3.4.1 – Mort subite</h4>
+                            <p>MORT SUBITE : Les combats ne sont pas limités en temps, le premier toucher sur n'importe quelle partie du corps est compté comme mort, la première équipe à ne plus comporter de participant vivant perd le round, le suivant débute rapidement en ne laissant que le temps de se replacer ; un coup à soi-même ou à un allié est compté comme mortel, si deux frappes sont simultanées, seule la première survenue est comptée et les coups du combattant désormais mort sont ignorés, et s'il est impossible de déterminer la première touche, le combat reprend.</p>
+                        </div>
+                        
+                        <div class="subarticle">
+                            <h4>3.4.2 – Coup le plus mortel</h4>
+                            <p>COUP LE PLUS MORTEL : Mêmes consignes que pour Mort subite, à l'exception que si deux coups se font simultanément, seul le coup le plus mortel est comptabilisé (exemple : un coup à la tête l'emporte sur un coup au coude).</p>
+                        </div>
+                        
+                        <div class="subarticle">
+                            <h4>3.4.3 – Presque réaliste</h4>
+                            <p>PRESQUE RÉALISTE : Mêmes consignes que pour Mort subite, à l'exception que si vous êtes touché, hormis les coups toujours mortels (tête, cou, estoc thoracique), vous pouvez continuer à combattre en handicapant le membre touché à hauteur de la force produite (exemple : un fort coup de tranche sur le bras droit impose de placer celui-ci dans le dos et de ne plus l'utiliser) ; au bout de quatre touches maximum (même éraflure), le combattant est considéré comme mort de douleur ; lorsqu'une blessure saignante (coupe forte, estoc) est causée, un décompte est lancé selon le membre touché, signifiant la perte de sang jusqu'à l'incapacité puis la mort ; quoi qu'il arrive, si pendant ce temps, même handicapé, le combattant arrive à tuer son adversaire, il remporte le round et les deux combattants recommencent le suivant sans conserver leurs blessures (il est du devoir de l'arbitre de plateau de signaler les touches et leur gravité à l'arbitre de table qui gère les comptes et les temps).</p>
+                        </div>
+                        
+                        <div class="subarticle">
+                            <h4>3.4.4 – Compte des points</h4>
+                            <p>COMPTE DES POINTS : Les rounds durent deux minutes avec vingt secondes de repos ; l'arbitre de table comptabilise le nombre de touches réalisées par chaque combattant, sauf si les combattants se retrouvent en bourrinage, auquel cas les comptes sont stoppés, un avertissement est administré, et l'arbitre de plateau doit séparer les adversaires avant de relancer le combat aussitôt.</p>
+                        </div>
                     </div>
 
                     <div class="checkbox-container">
@@ -294,8 +315,8 @@
                     <h2>4. Arbitrages et établissement des sanctions</h2>
 
                     <div class="article">
-                        <h3>Article 4.1 – Respect de l'administration</h3>
-                        <p>Le respect de l'administration, de l'arbitrage et des décisions prises doit être total. L'association n'est pas un tribunal : une sanction, à condition d'être prise par une responsable (membre du bureau ou arbitre désigné) et de ne pas être fondée sur un jugement discriminatoire, est immédiate, non modifiable et définitive ; sauf voir le point suivant.</p>
+                        <h3>Article 4.1 – Respect de l'organisation</h3>
+                        <p>Le respect de l'organisation, de l'arbitrage et des décisions prises doit être total. L'association n'est pas un tribunal : une sanction, à condition d'être prise par une responsable (membre de l'organisation ou arbitre désigné) et de ne pas être fondée sur un jugement discriminatoire, est immédiate, non modifiable et définitive ; sauf voir le point suivant.</p>
                     </div>
 
                     <div class="article">
@@ -314,33 +335,33 @@
                     </div>
 
                     <div class="article">
-                        <h3>Article 4.5 – Composition minimale de l'arbitrage</h3>
-                        <p>Un combat nécessite au minimum 2 arbitres : un arbitre dit de "plateau" et un arbitre dit de "table".</p>
-                    </div>
-
-                    <div class="article">
-                        <h3>Article 4.6 – Position des arbitres</h3>
-                        <p>L'arbitre de table est hors de la zone de combat et l'arbitre de plateau doit être sur la zone de combat mais mobile de façon à ne pas gêner celui-ci.</p>
-                    </div>
-
-                    <div class="article">
-                        <h3>Article 4.7 – Rôles de l'arbitre de table</h3>
-                        <p>L'arbitre de table a pour rôles de comptabiliser les points, les avertissements, les sorties et les admonitions de chaque camp.</p>
-                    </div>
-
-                    <div class="article">
-                        <h3>Article 4.8 – Attribution des victoires par l'arbitre de table</h3>
-                        <p>L'arbitre de table attribue les victoires de rounds et de combats en fonction des règles de jeu de la catégorie et du règlement.</p>
-                    </div>
-
-                    <div class="article">
-                        <h3>Article 4.9 – Rôles de l'arbitre de plateau</h3>
-                        <p>L'arbitre de plateau a pour rôles d'assurer la sécurité et la bonne continuité des combats en lançant les rounds, les stoppant, et en attribuant des avertissements, des sorties ou des admonitions.</p>
-                    </div>
-
-                    <div class="article">
-                        <h3>Article 4.10 – Conformité par l'arbitre de plateau</h3>
-                        <p>L'arbitre de plateau se charge de la conformité des tenues, des mœurs et des armes des combattants.</p>
+                        <h3>Article 4.5 – Composition et rôles de l'arbitrage</h3>
+                        <p>Un combat nécessite une équipe d'arbitrage composée d'au moins 2 arbitres : un arbitre dit de "plateau" et un arbitre dit de "table".</p>
+                        
+                        <div class="subarticle">
+                            <h4>4.5.1 – Position des arbitres</h4>
+                            <p>L'arbitre de table est hors de la zone de combat et l'arbitre de plateau doit être sur la zone de combat mais mobile de façon à ne pas gêner celui-ci.</p>
+                        </div>
+                        
+                        <div class="subarticle">
+                            <h4>4.5.2 – Rôles de l'arbitre de table</h4>
+                            <p>L'arbitre de table a pour rôles de comptabiliser les points, les avertissements, les sorties et les admonitions de chaque camp.</p>
+                        </div>
+                        
+                        <div class="subarticle">
+                            <h4>4.5.3 – Attribution des victoires par l'arbitre de table</h4>
+                            <p>L'arbitre de table attribue les victoires de rounds et de combats en fonction des règles de jeu de la catégorie et du règlement.</p>
+                        </div>
+                        
+                        <div class="subarticle">
+                            <h4>4.5.4 – Rôles de l'arbitre de plateau</h4>
+                            <p>L'arbitre de plateau a pour rôles d'assurer la sécurité et la bonne continuité des combats en lançant les rounds, les stoppant, et en attribuant des avertissements, des sorties ou des admonitions.</p>
+                        </div>
+                        
+                        <div class="subarticle">
+                            <h4>4.5.5 – Conformité par l'arbitre de plateau</h4>
+                            <p>L'arbitre de plateau se charge de la conformité des tenues, des mœurs et des armes des combattants.</p>
+                        </div>
                     </div>
 
                     <div class="checkbox-container">
