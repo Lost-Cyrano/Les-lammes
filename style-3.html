@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Club Béhourd - Minimaliste Rune</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Jost:wght@300;400;600&family=Sorts+Mill+Goudy:ital@0;1&display=swap');
+
+        *, *::before, *::after {
+            margin: 0; padding: 0; box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Jost', sans-serif;
+            background: #fcf9f2;
+            color: #2e2e2e;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 5 L35 25 L55 30 L35 35 L30 55 L25 35 L5 30 L25 25 Z' fill='none' stroke='%23d4af37' stroke-opacity='0.15' stroke-width='1.5'/%3E%3C/svg%3E");
+        }
+
+        header {
+            padding: 50px 20px 30px;
+            text-align: center;
+            border-bottom: 1px solid #e5d9c5;
+        }
+
+        .rune-big {
+            font-size: 3.5rem;
+            color: #b49450;
+            letter-spacing: 10px;
+            margin-bottom: 5px;
+        }
+
+        h1 {
+            font-family: 'Sorts Mill Goudy', serif;
+            font-size: 2.5rem;
+            font-weight: 400;
+            color: #3c3c3c;
+            letter-spacing: 8px;
+            text-transform: uppercase;
+        }
+
+        .subtitle {
+            font-size: 0.8rem;
+            color: #9b8c7c;
+            letter-spacing: 6px;
+            margin-top: 5px;
+        }
+
+        nav {
+            padding: 15px 0;
+            border-bottom: 1px solid #e5d9c5;
+            position: sticky;
+            top: 0;
+            background: #fcf9f2f2;
+            backdrop-filter: blur(5px);
+            z-index: 100;
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            list-style: none;
+            gap: 5px;
+        }
+
+        nav a {
+            color: #5a5248;
+            text-decoration: none;
+            font-weight: 400;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            padding: 10px 18px;
+            transition: 0.3s;
+            border-bottom: 1px solid transparent;
+        }
+
+        nav a:hover {
+            border-bottom-color: #b49450;
+            color: #000;
+        }
+
+        main {
+            flex: 1;
+            max-width: 1000px;
+            width: 90%;
+            margin: 50px auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 35px;
+        }
+
+        .card {
+            background: #ffffff;
+            border: 1px solid #e5d9c5;
+            padding: 30px;
+            border-radius: 2px;
+            box-shadow: 0 10px 20px -12px rgba(0,0,0,0.08);
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .card::before {
+            content: 'ᛟ';
+            font-size: 2rem;
+            color: #d4af3733;
+            position: absolute;
+            top: 15px;
+            right: 20px;
+        }
+
+        .card:hover {
+            box-shadow: 0 16px 30px -12px rgba(180, 148, 80, 0.2);
+            border-color: #d4af37;
+        }
+
+        .card h2 {
+            font-family: 'Sorts Mill Goudy', serif;
+            font-size: 1.6rem;
+            font-weight: 400;
+            color: #3c3c3c;
+            margin-bottom: 15px;
+            border-left: 3px solid #d4af37;
+            padding-left: 15px;
+        }
+
+        .card p {
+            line-height: 1.8;
+            color: #5f5b55;
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: transparent;
+            border: 1px solid #3c3c3c;
+            color: #3c3c3c;
+            padding: 10px 24px;
+            text-decoration: none;
+            font-weight: 500;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background: #3c3c3c;
+            color: #fcf9f2;
+        }
+
+        .btn-gold {
+            border-color: #b49450;
+            color: #b49450;
+        }
+
+        .btn-gold:hover {
+            background: #b49450;
+            color: #fff;
+        }
+
+        footer {
+            background: #f4efe5;
+            text-align: center;
+            padding: 20px;
+            color: #8b8173;
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            border-top: 1px solid #e5d9c5;
+        }
+
+        @media (max-width: 600px) {
+            h1 { font-size: 1.8rem; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="rune-big">ᛟ ᚱ ᛟ</div>
+        <h1>Les Lames de Fer</h1>
+        <p class="subtitle">Club de Béhourd</p>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="#">Accueil</a></li>
+            <li><a href="#">Événements</a></li>
+            <li><a href="#">Adhésion</a></li>
+            <li><a href="#">Règlements</a></li>
+            <li><a href="#">Galerie</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+    <main>
+        <div class="card">
+            <h2>Prochain Événement</h2>
+            <p>Tournoi épée-bouclier le 15 juillet. Équipement fourni, combats en équipe jusqu'à 6vs6.</p>
+            <a href="#" class="btn">S'inscrire</a>
+        </div>
+        <div class="card">
+            <h2>Adhésion</h2>
+            <p>Adhésion 35€/an. Prêt d'équipement, accès aux créneaux et à la communauté.</p>
+            <a href="#" class="btn btn-gold">Adhérer</a>
+        </div>
+        <div class="card">
+            <h2>Règlement</h2>
+            <p>Règles, conventions d'armes, sécurité. Tout savoir avant de combattre.</p>
+            <a href="#" class="btn">Consulter</a>
+        </div>
+    </main>
+    <footer>
+        <p>© 2026 Les Lames de Fer — info@leslamesdefer.fr</p>
+    </footer>
+</body>
+</html>
