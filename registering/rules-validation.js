@@ -9,7 +9,7 @@
 
     // --- Récupération de l'URL de redirection depuis le paramètre "redirect" ---
     const params = new URLSearchParams(window.location.search);
-    const redirectUrl = params.get('redirect') || 'inscription.html';
+    const redirectUrl = params.get('redirect') || 'https://lost-cyrano.github.io/Les-lammes/registering/payement.html';
 
     // --- Sélection des éléments du DOM ---
     const checkboxes = document.querySelectorAll('.section-check');
