@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paiement - Les Lames de Fer</title>
+
+    <!-- Polices Google -->
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,600;1,400&family=Grenze+Gotisch:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- Fichier CSS principal -->
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        /* --- Styles spécifiques à la page de paiement --- */
+        .payment-container {
+            max-width: 750px;
+            margin: 0 auto;
+        }
+        .payment-option {
+            margin-bottom: 20px;
+        }
+        .payment-option .card {
+            cursor: pointer;
+            transition: all 0.25s;
+            border-left: 6px solid var(--bordure-claire);
+        }
+        .payment-option .card:hover {
+            border-left-color: var(--rouge-vif);
+            box-shadow: 0 10px 22px rgba(139,58,58,0.12);
+        }
+        .payment-option.selected .card {
+            border-left-color: var(--rouge-vif);
+            background: #fef9f5;
+            box-shadow: 0 8px 20px rgba(139,58,58,0.18);
+        }
+        .payment-option input[type="radio"] {
+            display: none;
+        }
+        .option-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .option-name {
+            font-family: 'Grenze Gotisch', cursive;
+            font-size: 1.5rem;
+            color: var(--rouge-fonce);
+        }
+        .option-price {
+            font-family: 'Grenze Gotisch', cursive;
+            font-size: 1.5rem;
+            color: var(--rouge-vif);
+            background: #fdf2f2;
+            padding: 5px 14px;
+            border-radius: 20px;
+        }
+        .option-detail {
+            font-size: 0.95rem;
+            color: var(--brun-texte);
+            margin-top: 8px;
+        }
+        .selected-indicator {
+            font-size: 0.85rem;
+            color: var(--rouge-vif);
+            font-weight: 600;
+            margin-top: 8px;
+            display: none;
+        }
+        .payment-option.selected .selected-indicator {
+            display: block;
+        }
+
+        /* Récapitulatif */
+        .summary {
+            background: var(--beige-carte);
+            border: 1px solid var(--bordure-claire);
+            border-radius: 6px;
+            padding: 25px;
+            margin-top: 30px;
+            box-shadow: 0 6px 16px rgba(0,0,0,0.04);
+        }
+        .summary h2 {
+            margin-top: 0;
+        }
+        .summary-line {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px dotted var(--bordure-claire);
+            font-size: 1rem;
+            color: var(--brun-texte);
+        }
+        .summary-line.total {
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--rouge-fonce);
+            border-bottom: none;
+            margin-top: 10px;
+            font-family: 'Grenze Gotisch', cursive;
+        }
+        .summary-line.tax {
+            font-size: 0.9rem;
+            color: #7a6b5c;
+        }
+
+        /* Email */
+        .email-section {
+            margin-top: 25px;
+        }
+
+        /* Bouton final */
+        .payment-submit {
+            text-align: center;
+            margin-top: 30px;
+        }
+        #email-error {
+            color: var(--rouge-vif);
+            font-weight: 600;
+            margin-top: 8px;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            .option-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- En-tête du site -->
+    <header class="site-header">
+        <span class="logo">Les Lames de Fer</span>
+        <p class="subtitle">Groupe de passionnés de combats médiévaux</p>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="main-nav">
+        <ul>
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="evenements.html">Événements</a></li>
+            <li><a href="adhesion.html">Adhésion</a></li>
+            <li><a href="reglements.html">Règlements</a></li>
+            <li><a href="galerie.html">Galerie</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <div class="container">
+            <h1>Paiement</h1>
+            <p style="font-size: 1.1rem; margin-bottom: 1.5rem;">
+                Choisissez votre formule et validez votre inscription à l'événement.
+            </p>
+
+            <div class="payment-container">
+
+                <!-- Option 1 : Non-adhérent -->
+                <label class="payment-option" for="option-non-adherent">
+                    <input type="radio" name="payment" id="option-non-adherent" value="35" data-label="Non-adhérent">
+                    <div class="card">
+                        <div class="option-header">
+                            <span class="option-name">Non-adhérent</span>
+                            <span class="option-price">35,00 €</span>
+                        </div>
+                        <p class="option-detail">Prix de l'événement pour les participants non-adhérents.</p>
+                        <span class="selected-indicator">✓ Option sélectionnée</span>
+                    </div>
+                </label>
+
+                <!-- Option 2 : Adhérent -->
+                <label class="payment-option" for="option-adherent">
+                    <input type="radio" name="payment" id="option-adherent" value="5" data-label="Adhérent">
+                    <div class="card">
+                        <div class="option-header">
+                            <span class="option-name">Adhérent</span>
+                            <span class="option-price">5,00 €</span>
+                        </div>
+                        <p class="option-detail">Tarif réduit pour les membres ayant déjà adhéré.</p>
+                        <span class="selected-indicator">✓ Option sélectionnée</span>
+                    </div>
+                </label>
+
+                <!-- Option 3 : Adhésion + Événement -->
+                <label class="payment-option" for="option-adhesion-evenement">
+                    <input type="radio" name="payment" id="option-adhesion-evenement" value="35" data-label="Adhésion + Événement">
+                    <div class="card">
+                        <div class="option-header">
+                            <span class="option-name">Adhésion + Événement</span>
+                            <span class="option-price">35,00 €</span>
+                        </div>
+                        <p class="option-detail">Adhésion (30 €) + participation à l'événement (5 €).</p>
+                        <span class="selected-indicator">✓ Option sélectionnée</span>
+                    </div>
+                </label>
+
+                <!-- Email de facturation -->
+                <div class="email-section">
+                    <div class="card">
+                        <h2>Email de facturation</h2>
+                        <div class="form-group" style="margin-bottom: 0;">
+                            <label for="billing-email">Adresse email pour la réception de la facture :</label>
+                            <input type="email" id="billing-email" placeholder="votre@email.com" required>
+                            <p id="email-error" class="hidden">Veuillez renseigner une adresse email valide.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Récapitulatif -->
+                <div class="summary" id="summary" style="display: none;">
+                    <h2>Récapitulatif de la commande</h2>
+                    <div class="summary-line">
+                        <span id="summary-label">Option</span>
+                        <span id="summary-base">0,00 €</span>
+                    </div>
+                    <div class="summary-line tax">
+                        <span>Taxes Dodo Payment (10 %)</span>
+                        <span id="summary-tax">0,00 €</span>
+                    </div>
+                    <div class="summary-line total">
+                        <span>Total TTC</span>
+                        <span id="summary-total">0,00 €</span>
+                    </div>
+                </div>
+
+                <!-- Bouton de paiement -->
+                <div class="payment-submit">
+                    <button id="pay-button" class="btn btn-lg" disabled>
+                        Payer avec Dodo Payment
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Pied de page -->
+    <footer class="site-footer">
+        <p>© 2026 Les Lames de Fer — Site réalisé par Anael</p>
+    </footer>
+
+    <!-- Script de gestion du paiement -->
+    <script>
+        (function() {
+            'use strict';
+
+            // --- Éléments du DOM ---
+            const radioButtons = document.querySelectorAll('input[name="payment"]');
+            const paymentOptions = document.querySelectorAll('.payment-option');
+            const emailInput = document.getElementById('billing-email');
+            const emailError = document.getElementById('email-error');
+            const payButton = document.getElementById('pay-button');
+            const summaryDiv = document.getElementById('summary');
+            const summaryLabel = document.getElementById('summary-label');
+            const summaryBase = document.getElementById('summary-base');
+            const summaryTax = document.getElementById('summary-tax');
+            const summaryTotal = document.getElementById('summary-total');
+
+            const TAX_RATE = 0.10; // 10% Dodo Payment
+
+            let selectedValue = null;
+            let selectedLabel = '';
+
+            // --- Fonction pour formater un montant en euros ---
+            function formatEuro(amount) {
+                return amount.toFixed(2).replace('.', ',') + ' €';
+            }
+
+            // --- Mise à jour du récapitulatif ---
+            function updateSummary() {
+                if (!selectedValue) {
+                    summaryDiv.style.display = 'none';
+                    return;
+                }
+
+                const baseHT = parseFloat(selectedValue);
+                const taxAmount = baseHT * TAX_RATE;
+                const totalTTC = baseHT + taxAmount;
+
+                summaryLabel.textContent = selectedLabel;
+                summaryBase.textContent = formatEuro(baseHT) + ' HT';
+                summaryTax.textContent = formatEuro(taxAmount);
+                summaryTotal.textContent = formatEuro(totalTTC);
+
+                summaryDiv.style.display = 'block';
+            }
+
+            // --- Validation de l'email ---
+            function validateEmail(email) {
+                const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                return re.test(email);
+            }
+
+            // --- Mise à jour de l'état du bouton ---
+            function updateButtonState() {
+                const emailValid = validateEmail(emailInput.value.trim());
+                const optionSelected = selectedValue !== null;
+
+                // Gestion de l'erreur email
+                if (emailInput.value.trim() !== '' && !emailValid) {
+                    emailError.classList.remove('hidden');
+                } else {
+                    emailError.classList.add('hidden');
+                }
+
+                payButton.disabled = !(optionSelected && emailValid);
+            }
+
+            // --- Écouteurs sur les options de paiement ---
+            radioButtons.forEach(function(radio) {
+                radio.addEventListener('change', function() {
+                    // Retire la classe selected de toutes les options
+                    paymentOptions.forEach(function(opt) {
+                        opt.classList.remove('selected');
+                    });
+
+                    if (radio.checked) {
+                        // Ajoute la classe selected à l'option choisie
+                        const parentOption = radio.closest('.payment-option');
+                        if (parentOption) {
+                            parentOption.classList.add('selected');
+                        }
+
+                        selectedValue = radio.value;
+                        selectedLabel = radio.getAttribute('data-label');
+                        updateSummary();
+                        updateButtonState();
+                    }
+                });
+            });
+
+            // --- Écouteur sur l'email ---
+            emailInput.addEventListener('input', function() {
+                updateButtonState();
+            });
+
+            // --- Action sur le bouton de paiement ---
+            payButton.addEventListener('click', function() {
+                if (payButton.disabled) {
+                    return;
+                }
+
+                const email = emailInput.value.trim();
+                if (!validateEmail(email)) {
+                    emailError.classList.remove('hidden');
+                    return;
+                }
+
+                const baseHT = parseFloat(selectedValue);
+                const taxAmount = baseHT * TAX_RATE;
+                const totalTTC = baseHT + taxAmount;
+
+                // Construction de l'URL Dodo Payment
+                // Adapte les paramètres selon la documentation de Dodo Payment
+                const paymentUrl = new URL('https://payment.dodo.com/pay'); // URL à adapter
+                paymentUrl.searchParams.append('amount', totalTTC.toFixed(2));
+                paymentUrl.searchParams.append('currency', 'EUR');
+                paymentUrl.searchParams.append('description', selectedLabel + ' - Les Lames de Fer');
+                paymentUrl.searchParams.append('email', email);
+                paymentUrl.searchParams.append('tax', taxAmount.toFixed(2));
+                paymentUrl.searchParams.append('tax_rate', (TAX_RATE * 100).toFixed(0));
+
+                // Redirection vers Dodo Payment
+                window.location.href = paymentUrl.toString();
+            });
+
+            // --- Sélection par défaut : Non-adhérent ---
+            const defaultRadio = document.getElementById('option-non-adherent');
+            if (defaultRadio) {
+                defaultRadio.checked = true;
+                defaultRadio.dispatchEvent(new Event('change'));
+            }
+
+        })();
+    </script>
+</body>
+</html>
