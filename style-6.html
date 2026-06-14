@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Club Béhourd - Hivernordique</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Marcellus&family=Raleway:wght@300;500;700&display=swap');
+
+        *, *::before, *::after {
+            margin: 0; padding: 0; box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Raleway', sans-serif;
+            background: #eef3f9;
+            color: #2a3b4c;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 5 L31 15 L41 16 L31 17 L30 27 L29 17 L19 16 L29 15 Z' fill='%238aaec0' fill-opacity='0.2' stroke='%237595a8' stroke-opacity='0.3' stroke-width='0.8'/%3E%3Ccircle cx='30' cy='30' r='1.8' fill='%237595a8' fill-opacity='0.25'/%3E%3C/svg%3E");
+        }
+
+        header {
+            text-align: center;
+            padding: 45px 20px 30px;
+            background: linear-gradient(180deg, #ffffff 0%, #eef3f9 100%);
+            border-bottom: 3px solid #7a9eb1;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.03);
+        }
+
+        h1 {
+            font-family: 'Marcellus', serif;
+            font-size: 3rem;
+            color: #1f3b4a;
+            letter-spacing: 8px;
+            text-transform: uppercase;
+            word-spacing: 8px;
+        }
+
+        .subtitle {
+            font-size: 0.85rem;
+            color: #5c7e92;
+            letter-spacing: 6px;
+            margin-top: 8px;
+        }
+
+        nav {
+            background: rgba(255,255,255,0.8);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid #cbdae4;
+            padding: 12px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            list-style: none;
+            gap: 8px;
+        }
+
+        nav a {
+            color: #2a3b4c;
+            text-decoration: none;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            padding: 10px 18px;
+            border-bottom: 2px solid transparent;
+            transition: 0.3s;
+            font-size: 0.85rem;
+        }
+
+        nav a:hover {
+            border-bottom-color: #7a9eb1;
+            color: #000;
+        }
+
+        main {
+            flex: 1;
+            max-width: 1050px;
+            width: 90%;
+            margin: 45px auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 12px 24px -8px rgba(0,0,0,0.06);
+            border: 1px solid #d9e2ec;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .card::before {
+            content: '❄';
+            font-size: 2rem;
+            opacity: 0.1;
+            position: absolute;
+            top: 15px;
+            right: 20px;
+        }
+
+        .card:hover {
+            box-shadow: 0 18px 30px -10px rgba(31, 59, 74, 0.15);
+            transform: translateY(-3px);
+        }
+
+        .card h2 {
+            font-family: 'Marcellus', serif;
+            font-size: 1.7rem;
+            color: #1f3b4a;
+            margin-bottom: 15px;
+            border-left: 4px solid #7a9eb1;
+            padding-left: 18px;
+        }
+
+        .card p {
+            line-height: 1.8;
+            color: #3c5060;
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #1f3b4a;
+            color: #f0f6fa;
+            padding: 12px 28px;
+            text-decoration: none;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.8rem;
+            border-radius: 30px;
+            border: none;
+            transition: 0.3s;
+            box-shadow: 0 4px 10px rgba(31,59,74,0.15);
+        }
+
+        .btn:hover {
+            background: #2e5366;
+            box-shadow: 0 8px 18px rgba(31,59,74,0.25);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid #1f3b4a;
+            color: #1f3b4a;
+        }
+
+        .btn-outline:hover {
+            background: #1f3b4a;
+            color: #fff;
+        }
+
+        footer {
+            background: #d8e4ef;
+            border-top: 1px solid #b0c6d4;
+            text-align: center;
+            padding: 20px;
+            color: #3c5060;
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+        }
+
+        @media (max-width: 600px) {
+            h1 { font-size: 2.2rem; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Les Lames de Fer</h1>
+        <p class="subtitle">Club de Béhourd • Hivernordique</p>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="#">Accueil</a></li>
+            <li><a href="#">Événements</a></li>
+            <li><a href="#">Adhésion</a></li>
+            <li><a href="#">Règlements</a></li>
+            <li><a href="#">Galerie</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+    <main>
+        <div class="card">
+            <h2>Prochain Événement</h2>
+            <p>Tournoi épée-bouclier le 15 juillet. Équipement fourni, combats jusqu'à 6vs6.</p>
+            <a href="#" class="btn">S'inscrire</a>
+        </div>
+        <div class="card">
+            <h2>Adhésion</h2>
+            <p>35€/an, prêt d'armure. Accédez aux entraînements et à la fraternité du Nord.</p>
+            <a href="#" class="btn btn-outline">Adhérer</a>
+        </div>
+        <div class="card">
+            <h2>Règlement</h2>
+            <p>Règles de combat, sécurité, conventions. La sagesse avant la force.</p>
+            <a href="#" class="btn btn-outline">Consulter</a>
+        </div>
+    </main>
+    <footer>
+        <p>© 2026 Les Lames de Fer — info@leslamesdefer.fr</p>
+    </footer>
+</body>
+</html>
