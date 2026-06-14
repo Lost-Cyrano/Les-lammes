@@ -35,6 +35,34 @@
             margin-bottom: 0;
             font-size: 1rem;
         }
+        
+        /* Styles pour les sous-clauses */
+        .subclauses {
+            margin-top: 8px;
+            margin-bottom: 4px;
+            padding-left: 20px;
+        }
+        .subclause-item {
+            display: flex;
+            align-items: baseline;
+            gap: 10px;
+            margin-bottom: 6px;
+            font-family: 'EB Garamond', serif;
+            font-size: 1rem;
+            color: var(--brun-texte);
+        }
+        .subclause-letter {
+            font-weight: 700;
+            color: var(--rouge-fonce);
+            min-width: 28px;
+            font-size: 1rem;
+            font-family: 'Grenze Gotisch', serif;
+        }
+        .subclause-content {
+            flex: 1;
+            line-height: 1.4;
+        }
+        
         .checkbox-container {
             margin-top: 20px;
             padding: 15px;
@@ -74,10 +102,10 @@
             font-weight: 600;
             margin-top: 10px;
         }
+        .hidden {
+            display: none;
+        }
     </style>
-
-    <script src="rules-validation.js" defer></script>
-    
 </head>
 <body>
 
@@ -101,7 +129,7 @@
 
                     <div class="article">
                         <h3>Article 1.1 – Utilisation des armes</h3>
-                        <p>Les participants n'ont le droit d'utiliser que les armes prêtées par l'association lors de l'événement.</p>
+                        <p>Les participants n'ont le droit d'utiliser que les armes prêtées par l'organisation de l'événement.</p>
                     </div>
 
                     <div class="article">
@@ -142,8 +170,13 @@
                     </div>
 
                     <div class="article">
-                        <h3>Article 2.2 – Acceptation des risques</h3>
-                        <p>Les participants, en s'inscrivant à un événement, prennent pleinement conscience de la nature de nos activités et se tiennent propres responsables de potentiels coups et blessures ; et admettent également avoir lu, compris et accepté l'intégralité du présent règlement.</p>
+                        <h3>Article 2.2 – Conscience de la nature des activités</h3>
+                        <p>Les participants, en s'inscrivant à un événement, prennent pleinement conscience de la nature de nos activités et se tiennent propres responsables de potentiels coups et blessures.</p>
+                    </div>
+
+                    <div class="article">
+                        <h3>Article 2.3 – Acceptation du règlement</h3>
+                        <p>Les participants admettent également avoir lu, compris et accepté l'intégralité du présent règlement.</p>
                     </div>
 
                     <div class="checkbox-container">
@@ -175,12 +208,52 @@
 
                     <div class="article">
                         <h3>Article 3.4 – Catégories d'armes</h3>
-                        <p>Les catégories d'armes sont les suivantes : a) Armes courtes et bâtardes ; b) Armes doubles et flexibles ; c) Armes longues et d'hast.</p>
+                        <p>Les catégories d'armes sont les suivantes :</p>
+                        <div class="subclauses">
+                            <div class="subclause-item">
+                                <span class="subclause-letter">a)</span>
+                                <span class="subclause-content">Armes courtes et bâtardes ;</span>
+                            </div>
+                            <div class="subclause-item">
+                                <span class="subclause-letter">b)</span>
+                                <span class="subclause-content">Armes doubles et flexibles ;</span>
+                            </div>
+                            <div class="subclause-item">
+                                <span class="subclause-letter">c)</span>
+                                <span class="subclause-content">Armes longues et d'hast.</span>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="article">
                         <h3>Article 3.5 – Catégories de nombre</h3>
-                        <p>Les catégories de nombre sont les suivantes : a) en 1/1 soit le Duel ; b) en 2/2 soit le "Duel en alliance" ; c) en 3/3 soit la Troïka ; d) en 4/4 soit "combat en rang" ; e) en 5/5 soit une Bataille ; f) en +6/+6 (à condition de nombre égal d'adversaires ou d'un accord unanime entre les équipes et l'administration) soit le Massacre.</p>
+                        <p>Les catégories de nombre sont les suivantes :</p>
+                        <div class="subclauses">
+                            <div class="subclause-item">
+                                <span class="subclause-letter">a)</span>
+                                <span class="subclause-content">en 1/1 soit le Duel ;</span>
+                            </div>
+                            <div class="subclause-item">
+                                <span class="subclause-letter">b)</span>
+                                <span class="subclause-content">en 2/2 soit le "Duel en alliance" ;</span>
+                            </div>
+                            <div class="subclause-item">
+                                <span class="subclause-letter">c)</span>
+                                <span class="subclause-content">en 3/3 soit la Troïka ;</span>
+                            </div>
+                            <div class="subclause-item">
+                                <span class="subclause-letter">d)</span>
+                                <span class="subclause-content">en 4/4 soit "combat en rang" ;</span>
+                            </div>
+                            <div class="subclause-item">
+                                <span class="subclause-letter">e)</span>
+                                <span class="subclause-content">en 5/5 soit une Bataille ;</span>
+                            </div>
+                            <div class="subclause-item">
+                                <span class="subclause-letter">f)</span>
+                                <span class="subclause-content">en +6/+6 (à condition de nombre égal d'adversaires ou d'un accord unanime entre les équipes et l'administration) soit le Massacre.</span>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="article">
@@ -375,5 +448,7 @@
     <footer class="site-footer">
         <p>© 2026 Les Lames de Fer — Site réalisé par Anael</p>
     </footer>
+
+    <script src="rules-validation.js" defer></script>
 </body>
 </html>
