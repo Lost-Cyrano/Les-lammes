@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Club Béhourd - Cotte de Mailles</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,600;1,400&family=Grenze+Gotisch:wght@400;700&display=swap');
+
+        *, *::before, *::after {
+            margin: 0; padding: 0; box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'EB Garamond', serif;
+            background: #f5f2e9;
+            color: #3b2b2b;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            background-image: url("data:image/svg+xml,%3Csvg width='30' height='30' viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='5' cy='5' r='2.2' fill='none' stroke='%23947a6d' stroke-opacity='0.25' stroke-width='0.8'/%3E%3Ccircle cx='20' cy='5' r='2.2' fill='none' stroke='%23947a6d' stroke-opacity='0.25' stroke-width='0.8'/%3E%3Ccircle cx='5' cy='20' r='2.2' fill='none' stroke='%23947a6d' stroke-opacity='0.25' stroke-width='0.8'/%3E%3Ccircle cx='20' cy='20' r='2.2' fill='none' stroke='%23947a6d' stroke-opacity='0.25' stroke-width='0.8'/%3E%3Cpath d='M5 5 L20 20 M20 5 L5 20' stroke='%23947a6d' stroke-opacity='0.1' stroke-width='0.6'/%3E%3C/svg%3E");
+        }
+
+        header {
+            text-align: center;
+            padding: 40px 20px 25px;
+            border-bottom: 2px solid #8b3a3a;
+            background: rgba(255,255,255,0.7);
+            backdrop-filter: blur(5px);
+        }
+
+        h1 {
+            font-family: 'Grenze Gotisch', cursive;
+            font-size: 3rem;
+            color: #6b2e2e;
+            letter-spacing: 6px;
+            text-shadow: 1px 1px 0 rgba(0,0,0,0.1);
+            margin-bottom: 5px;
+        }
+
+        .subtitle {
+            font-size: 0.9rem;
+            color: #947a6d;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        nav {
+            background: #ffffffdd;
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid #d4c4b7;
+            padding: 12px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            list-style: none;
+            gap: 5px;
+        }
+
+        nav a {
+            color: #5a3e3e;
+            text-decoration: none;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            padding: 10px 18px;
+            border: 1px solid transparent;
+            border-radius: 2px;
+            transition: all 0.25s;
+            font-size: 0.85rem;
+        }
+
+        nav a:hover {
+            border-bottom: 2px solid #8b3a3a;
+            color: #2e1e1e;
+        }
+
+        main {
+            flex: 1;
+            max-width: 1050px;
+            width: 90%;
+            margin: 40px auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background: #fffef9;
+            border: 1px solid #d4c4b7;
+            border-radius: 4px;
+            padding: 28px;
+            box-shadow: 0 8px 18px rgba(0,0,0,0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+            border-left: 6px solid #8b3a3a;
+        }
+
+        .card::after {
+            content: '⚔';
+            font-size: 1.8rem;
+            opacity: 0.1;
+            position: absolute;
+            bottom: 15px;
+            right: 20px;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 22px rgba(139,58,58,0.15);
+        }
+
+        .card h2 {
+            font-family: 'Grenze Gotisch', cursive;
+            font-size: 1.8rem;
+            color: #6b2e2e;
+            margin-bottom: 12px;
+            border-bottom: 1px dotted #d4c4b7;
+            padding-bottom: 8px;
+        }
+
+        .card p {
+            line-height: 1.8;
+            color: #5a4a44;
+            margin-bottom: 22px;
+            font-size: 1.05rem;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #8b3a3a;
+            color: #fdf7f2;
+            padding: 10px 24px;
+            text-decoration: none;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.8rem;
+            border: 1px solid #6b2e2e;
+            border-radius: 2px;
+            transition: all 0.25s;
+        }
+
+        .btn:hover {
+            background: #a04848;
+            border-color: #8b3a3a;
+            box-shadow: 0 4px 10px rgba(139,58,58,0.3);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: #6b2e2e;
+            border: 1px solid #8b3a3a;
+        }
+
+        .btn-outline:hover {
+            background: #8b3a3a;
+            color: #fff;
+        }
+
+        footer {
+            background: #e5d9ce;
+            border-top: 2px solid #8b3a3a;
+            text-align: center;
+            padding: 18px;
+            color: #5a4a44;
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+        }
+
+        @media (max-width: 600px) {
+            h1 { font-size: 2.2rem; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Les Lames de Fer</h1>
+        <p class="subtitle">Club de Béhourd • Cotte de Mailles</p>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="#">Accueil</a></li>
+            <li><a href="#">Événements</a></li>
+            <li><a href="#">Adhésion</a></li>
+            <li><a href="#">Règlements</a></li>
+            <li><a href="#">Galerie</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+    <main>
+        <div class="card">
+            <h2>Prochain Événement</h2>
+            <p>Tournoi épée-bouclier le 15 juillet. Équipement fourni, combat en équipe jusqu'à 6vs6.</p>
+            <a href="#" class="btn">S'inscrire</a>
+        </div>
+        <div class="card">
+            <h2>Adhésion</h2>
+            <p>35€/an, prêt d'armure inclus. Rejoignez notre compagnie et participez à tous les rassemblements.</p>
+            <a href="#" class="btn btn-outline">Adhérer</a>
+        </div>
+        <div class="card">
+            <h2>Règlement</h2>
+            <p>Règles complètes, conventions d'armes, sécurité. À consulter avant de croiser le fer.</p>
+            <a href="#" class="btn btn-outline">Consulter</a>
+        </div>
+    </main>
+    <footer>
+        <p>© 2026 Les Lames de Fer — info@leslamesdefer.fr</p>
+    </footer>
+</body>
+</html>
