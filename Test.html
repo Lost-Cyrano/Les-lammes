@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Règlement - Les Lames de Fer</title>
+
+    <!-- Polices Google requises par le style Cotte de Mailles -->
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,600;1,400&family=Grenze+Gotisch:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- Fichier CSS principal -->
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        /* Petits ajustements spécifiques à cette page */
+        .regulation-section {
+            margin-bottom: 30px;
+        }
+        .regulation-section .card {
+            border-left-color: var(--rouge-vif);
+        }
+        .checkbox-container {
+            margin-top: 20px;
+            padding: 15px;
+            background: #f9f5f0;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 600;
+            color: var(--brun-texte);
+        }
+        .checkbox-container input[type="checkbox"] {
+            width: 22px;
+            height: 22px;
+            accent-color: var(--rouge-vif);
+            cursor: pointer;
+        }
+        .btn:disabled {
+            background: #b89a9a;
+            border-color: #b89a9a;
+            cursor: not-allowed;
+            box-shadow: none;
+            opacity: 0.7;
+        }
+        .btn:disabled:hover {
+            background: #b89a9a;
+            border-color: #b89a9a;
+        }
+        .final-section {
+            text-align: center;
+            margin-top: 40px;
+        }
+        #redirect-error {
+            color: var(--rouge-vif);
+            font-weight: 600;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- En-tête du site -->
+    <header class="site-header">
+        <span class="logo">Les Lames de Fer</span>
+        <p class="subtitle">Club de Béhourd • Embrun</p>
+    </header>
+
+    <!-- Navigation (identique à toutes les pages) -->
+    <nav class="main-nav">
+        <ul>
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="evenements.html">Événements</a></li>
+            <li><a href="adhesion.html">Adhésion</a></li>
+            <li><a href="reglements.html" class="active">Règlements</a></li>
+            <li><a href="galerie.html">Galerie</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <div class="container">
+            <h1>Règlement du Club</h1>
+            <p style="font-size: 1.1rem; margin-bottom: 2rem;">
+                Avant de pouvoir continuer, vous devez lire et accepter l'intégralité des règles ci-dessous.
+                Cochez chaque section après l'avoir comprise.
+            </p>
+
+            <!-- Catégorie 1 : Nomenclature et catégories de combat -->
+            <div class="regulation-section">
+                <div class="card">
+                    <h2>1. Nomenclature et catégories de combat</h2>
+                    <p>Le club propose plusieurs formats de combat : duels (épée, armes d'hast, épée-bouclier), mêlées en 2vs2, 3vs3, 4vs4, 5vs5, et affrontements jusqu'à 6 contre 6.</p>
+                    <p>Les armes autorisées sont les épées en acier émoussé, les lances et haches conformes aux normes fédérales. Les boucliers ne doivent pas dépasser 80 cm de diamètre. Toute arme non conforme sera refusée.</p>
+                    <p>Les combats se déroulent sur une aire délimitée. Les participants doivent respecter les catégories de poids et d'expérience définies par les organisateurs.</p>
+
+                    <div class="checkbox-container">
+                        <input type="checkbox" id="cat1" class="section-check">
+                        <label for="cat1">Je certifie avoir lu, compris et accepté la section "Nomenclature et catégories de combat".</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Catégorie 2 : Équipement et sécurité -->
+            <div class="regulation-section">
+                <div class="card">
+                    <h2>2. Équipement et sécurité</h2>
+                    <p>Le port du casque, des gants et d'une protection de torse est obligatoire en tout temps lors des combats. L'équipement prêté par le club est vérifié avant chaque séance.</p>
+                    <p>Les combattants utilisant leur propre matériel doivent le faire valider par un responsable. Les protections génitales, les protège-tibias et les coudières sont fortement recommandés.</p>
+                    <p>Aucun combat ne débute sans l'inspection visuelle de l'arbitre. Le non-respect de ces règles entraîne l'exclusion immédiate de la session.</p>
+
+                    <div class="checkbox-container">
+                        <input type="checkbox" id="cat2" class="section-check">
+                        <label for="cat2">Je certifie avoir lu, compris et accepté la section "Équipement et sécurité".</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Catégorie 3 : Règles de combat et fair-play -->
+            <div class="regulation-section">
+                <div class="card">
+                    <h2>3. Règles de combat et fair-play</h2>
+                    <p>Toute frappe doit être portée avec contrôle. Les coups à la tête, à la nuque et aux parties génitales sont strictement interdits. Les projections sont autorisées uniquement si les deux adversaires sont d'accord et sous supervision.</p>
+                    <p>Un combattant touché de manière franche doit reconnaître le coup. L'arbitre peut arrêter le combat à tout moment. Les insultes, provocations et comportements anti-sportifs sont passibles de sanctions.</p>
+                    <p>L'esprit chevaleresque est au cœur de notre pratique. Le respect de l'adversaire, des arbitres et du public est primordial.</p>
+
+                    <div class="checkbox-container">
+                        <input type="checkbox" id="cat3" class="section-check">
+                        <label for="cat3">Je certifie avoir lu, compris et accepté la section "Règles de combat et fair-play".</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Catégorie 4 : Sanctions et pénalités -->
+            <div class="regulation-section">
+                <div class="card">
+                    <h2>4. Sanctions et pénalités</h2>
+                    <p>Toute infraction aux règles est notifiée par l'arbitre. Un premier avertissement est oral, un deuxième entraîne une exclusion temporaire du combat. Trois avertissements dans la même journée conduisent à une exclusion définitive de l'événement.</p>
+                    <p>Les comportements dangereux (coups non maîtrisés, non-respect des zones interdites) peuvent donner lieu à une suspension du club. Les bagarres hors combat sont interdites et seront signalées aux autorités compétentes.</p>
+                    <p>Les sanctions sont sans appel et peuvent être consultées auprès du comité directeur.</p>
+
+                    <div class="checkbox-container">
+                        <input type="checkbox" id="cat4" class="section-check">
+                        <label for="cat4">Je certifie avoir lu, compris et accepté la section "Sanctions et pénalités".</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Catégorie 5 : Engagement et responsabilité -->
+            <div class="regulation-section">
+                <div class="card">
+                    <h2>5. Engagement et responsabilité</h2>
+                    <p>En participant aux activités du club, chaque membre reconnaît les risques inhérents aux sports de combat médiévaux. Une décharge de responsabilité doit être signée (pour les mineurs, par le représentant légal).</p>
+                    <p>Le club décline toute responsabilité en cas de blessure due au non-respect des règles ou à l'utilisation d'un équipement non conforme. Une assurance personnelle est recommandée.</p>
+                    <p>L'adhésion implique l'acceptation pleine et entière du présent règlement, qui peut être modifié en cours d'année après vote du bureau.</p>
+
+                    <div class="checkbox-container">
+                        <input type="checkbox" id="cat5" class="section-check">
+                        <label for="cat5">Je certifie avoir lu, compris et accepté la section "Engagement et responsabilité".</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bouton final et éventuel message d'erreur -->
+            <div class="final-section">
+                <button id="accept-all" class="btn btn-lg" disabled>
+                    J'ai lu et j'accepte l'intégralité du règlement
+                </button>
+                <p id="redirect-error" class="hidden">Veuillez cocher toutes les sections ci-dessus avant de continuer.</p>
+            </div>
+
+            <!-- Lien de secours si pas de redirection -->
+            <p class="text-center mt-2" id="fallback-link" style="display: none;">
+                <a href="inscription.html">Continuer sans redirection automatique</a>
+            </p>
+        </div>
+    </main>
+
+    <!-- Pied de page -->
+    <footer class="site-footer">
+        <p>© 2026 Les Lames de Fer — Embrun, entre lac et sommets</p>
+    </footer>
+
+    <!-- Script de gestion des cases à cocher et de la redirection -->
+    <script>
+        (function() {
+            // Récupération de l'URL de redirection depuis le paramètre "redirect"
+            const params = new URLSearchParams(window.location.search);
+            let redirectUrl = params.get('redirect');
+            // Si pas de paramètre, on définit une page par défaut (page d'inscription)
+            if (!redirectUrl) {
+                redirectUrl = 'inscription.html';
+            }
+
+            // Sélection des éléments
+            const checkboxes = document.querySelectorAll('.section-check');
+            const acceptButton = document.getElementById('accept-all');
+            const errorMessage = document.getElementById('redirect-error');
+            const fallbackLink = document.getElementById('fallback-link');
+
+            // Fonction pour vérifier si toutes les cases sont cochées
+            function updateButtonState() {
+                const allChecked = Array.from(checkboxes).every(cb => cb.checked);
+                acceptButton.disabled = !allChecked;
+
+                // Affiche le message d'erreur si le bouton est désactivé et que l'utilisateur a déjà tenté ?
+                // On laisse le message caché en temps normal, on l'affiche si on clique sur le bouton désactivé
+                // On gère ça avec un écouteur sur le bouton
+                if (allChecked) {
+                    errorMessage.classList.add('hidden');
+                }
+            }
+
+            // Écouteur sur chaque case
+            checkboxes.forEach(cb => {
+                cb.addEventListener('change', updateButtonState);
+            });
+
+            // Action sur le bouton quand il devient actif
+            acceptButton.addEventListener('click', function(e) {
+                if (acceptButton.disabled) {
+                    // Normalement impossible, mais au cas où
+                    errorMessage.classList.remove('hidden');
+                    return;
+                }
+                // Redirection vers l'URL cible (on peut y ajouter un paramètre pour signaler l'acceptation)
+                window.location.href = redirectUrl;
+            });
+
+            // Si on clique sur le bouton désactivé, on montre le message
+            acceptButton.addEventListener('mousedown', function(e) {
+                if (acceptButton.disabled) {
+                    errorMessage.classList.remove('hidden');
+                }
+            });
+
+            // Vérification initiale
+            updateButtonState();
+
+            // Affichage du lien de secours si la redirection échoue (mais on le laisse caché par défaut)
+            // On pourrait le montrer après 10 secondes si pas d'interaction, mais peu utile.
+        })();
+    </script>
+</body>
+</html>
