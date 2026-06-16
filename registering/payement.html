@@ -24,7 +24,6 @@
             --brun-fonce: #3b2b2b;
             --footer-bg: #e5d9ce;
             --bordure-claire: #d4c4b7;
-            --or-doux: #c9a96e;
         }
 
         * {
@@ -33,29 +32,33 @@
             box-sizing: border-box;
         }
 
+        html, body {
+            height: 100%;
+        }
+
         body {
             background: #f5f2e9;
             background-image: url("data:image/svg+xml,%3Csvg width='30' height='30' viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='5' cy='5' r='2.2' fill='none' stroke='%23947a6d' stroke-opacity='0.2' stroke-width='0.8'/%3E%3Ccircle cx='20' cy='5' r='2.2' fill='none' stroke='%23947a6d' stroke-opacity='0.2' stroke-width='0.8'/%3E%3Ccircle cx='5' cy='20' r='2.2' fill='none' stroke='%23947a6d' stroke-opacity='0.2' stroke-width='0.8'/%3E%3Ccircle cx='20' cy='20' r='2.2' fill='none' stroke='%23947a6d' stroke-opacity='0.2' stroke-width='0.8'/%3E%3C/svg%3E");
             font-family: 'EB Garamond', serif;
             color: #3b2b2b;
-            min-height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: flex-start;
             padding: 20px;
+            min-height: 100vh;
         }
 
         /* ---- CARTE PRINCIPALE ---- */
         .payment-card {
             background: #ffffff;
-            max-width: 680px;
+            max-width: 780px;
             width: 100%;
-            margin: 20px auto 40px;
+            margin: 20px auto;
             border-radius: 12px;
             box-shadow: 0 16px 40px rgba(60, 40, 30, 0.12), 0 4px 12px rgba(0,0,0,0.05);
             border: 1px solid #ddd0c0;
             overflow: hidden;
+            flex-shrink: 0;
         }
 
         .payment-header {
@@ -108,162 +111,235 @@
             padding-bottom: 8px;
         }
 
-        .payment-body .intro {
+        .intro {
             color: #5a4a44;
             margin-bottom: 25px;
             font-size: 1.05rem;
             line-height: 1.6;
         }
 
-        /* ---- OPTIONS DE PAIEMENT ---- */
-        .option-group {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-            margin-bottom: 30px;
-        }
-
-        .option-card {
-            position: relative;
-            display: flex;
-            align-items: center;
-            background: #fefcf8;
-            border: 2px solid #e5d9c5;
-            border-radius: 10px;
-            padding: 18px 20px;
-            cursor: pointer;
-            transition: all 0.25s ease;
-            gap: 16px;
-        }
-
-        .option-card:hover {
-            border-color: #c9a96e;
-            box-shadow: 0 4px 18px rgba(139, 58, 58, 0.08);
-        }
-
-        .option-card.selected {
-            border-color: #8b3a3a;
-            background: #fef9f5;
-            box-shadow: 0 6px 22px rgba(139, 58, 58, 0.12);
-        }
-
-        .option-card.disabled {
-            opacity: 0.55;
-            cursor: not-allowed;
-            pointer-events: none;
-            filter: grayscale(30%);
-            background: #f9f6f0;
-        }
-
-        .option-card .radio-circle {
-            width: 22px;
-            height: 22px;
-            border-radius: 50%;
-            border: 2px solid #c4b292;
-            flex-shrink: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: 0.2s;
-        }
-
-        .option-card.selected .radio-circle {
-            border-color: #8b3a3a;
-            background: #8b3a3a;
-        }
-
-        .option-card.selected .radio-circle::after {
-            content: '';
-            width: 8px;
-            height: 8px;
-            background: #fff;
-            border-radius: 50%;
-        }
-
-        .option-card .option-content {
-            flex: 1;
-        }
-
-        .option-card .option-name {
-            font-family: 'Grenze Gotisch', cursive;
-            font-size: 1.3rem;
-            color: #6b2e2e;
-            letter-spacing: 1px;
-        }
-
-        .option-card .option-desc {
-            font-size: 0.92rem;
-            color: #7a6b5c;
-            margin-top: 3px;
-        }
-
-        .option-card .option-price {
-            font-family: 'Grenze Gotisch', cursive;
-            font-size: 1.5rem;
-            color: #8b3a3a;
-            background: #fdf2f2;
-            padding: 6px 16px;
-            border-radius: 25px;
-            white-space: nowrap;
-            letter-spacing: 1px;
-        }
-
-        .option-card .locked-badge {
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            color: #947a6d;
-            margin-top: 6px;
-            font-family: 'EB Garamond', serif;
-        }
-
-        .option-card .locked-badge::before {
-            content: '🔒';
-        }
-
-        /* ---- EMAIL ---- */
-        .email-field {
-            margin-bottom: 25px;
+        /* ---- SÉLECTION FORMULE ---- */
+        .formula-selector {
+            margin-bottom: 28px;
             background: #fefcf8;
             border: 1px solid #e5d9c5;
             border-radius: 10px;
             padding: 20px;
         }
 
-        .email-field label {
-            display: block;
+        .formula-selector label {
             font-weight: 600;
             color: #5a4a44;
-            margin-bottom: 8px;
-            font-size: 1rem;
-            letter-spacing: 0.5px;
+            display: block;
+            margin-bottom: 6px;
         }
 
-        .email-field input {
+        .formula-selector select {
             width: 100%;
-            padding: 12px 16px;
+            padding: 10px 14px;
             border: 2px solid #e5d9c5;
             border-radius: 8px;
             font-family: 'EB Garamond', serif;
             font-size: 1.05rem;
             background: #fffef9;
-            transition: 0.25s;
+            color: #3b2b2b;
+            margin-bottom: 12px;
         }
 
-        .email-field input:focus {
+        .formula-selector select:focus {
             outline: none;
             border-color: #8b3a3a;
-            box-shadow: 0 0 0 4px rgba(139, 58, 58, 0.08);
         }
 
-        .email-error {
-            color: #c0392b;
+        .quantity-selector {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-top: 10px;
+        }
+
+        .quantity-selector button {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            border: 2px solid #8b3a3a;
+            background: #fff;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #8b3a3a;
+            cursor: pointer;
+            transition: 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .quantity-selector button:hover {
+            background: #8b3a3a;
+            color: #fff;
+        }
+
+        .quantity-selector .qty-display {
+            font-family: 'Grenze Gotisch', cursive;
+            font-size: 1.5rem;
+            color: #6b2e2e;
+            min-width: 40px;
+            text-align: center;
+        }
+
+        /* ---- PARTICIPANTS ---- */
+        .participants-section {
+            margin-bottom: 25px;
+        }
+
+        .participant-card {
+            background: #fefcf8;
+            border: 1px solid #e5d9c5;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 16px;
+            position: relative;
+        }
+
+        .participant-card h3 {
+            font-family: 'Grenze Gotisch', cursive;
+            color: #6b2e2e;
+            font-size: 1.3rem;
+            margin-bottom: 14px;
+            letter-spacing: 1px;
+        }
+
+        .participant-card .remove-participant {
+            position: absolute;
+            top: 14px;
+            right: 16px;
+            background: none;
+            border: none;
+            font-size: 1.3rem;
+            color: #8b3a3a;
+            cursor: pointer;
+            font-family: 'EB Garamond', serif;
+        }
+
+        .form-row {
+            display: flex;
+            gap: 14px;
+            margin-bottom: 12px;
+            flex-wrap: wrap;
+        }
+
+        .form-group {
+            flex: 1;
+            min-width: 180px;
+        }
+
+        .form-group label {
+            display: block;
             font-weight: 600;
+            color: #5a4a44;
+            margin-bottom: 4px;
             font-size: 0.9rem;
-            margin-top: 6px;
+        }
+
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 10px 12px;
+            border: 2px solid #e5d9c5;
+            border-radius: 6px;
+            font-family: 'EB Garamond', serif;
+            font-size: 1rem;
+            background: #fffef9;
+            transition: 0.2s;
+        }
+
+        .form-group input:focus, .form-group select:focus {
+            outline: none;
+            border-color: #8b3a3a;
+            box-shadow: 0 0 0 3px rgba(139, 58, 58, 0.06);
+        }
+
+        .minor-section {
+            background: #fdf4f4;
+            border: 1px solid #e8c8c8;
+            border-radius: 8px;
+            padding: 14px;
+            margin-top: 12px;
             display: none;
+        }
+
+        .minor-section p {
+            margin-bottom: 10px;
+            color: #8b3a3a;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .minor-section .checkbox-minor {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin-bottom: 8px;
+        }
+
+        .minor-section .checkbox-minor input {
+            width: 18px;
+            height: 18px;
+            margin-top: 3px;
+            accent-color: #8b3a3a;
+            flex-shrink: 0;
+        }
+
+        .minor-section .checkbox-minor label {
+            font-size: 0.9rem;
+            color: #5a4a44;
+        }
+
+        /* ---- EMAIL FACTURATION ---- */
+        .billing-section {
+            background: #fefcf8;
+            border: 1px solid #e5d9c5;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 25px;
+        }
+
+        .billing-section h3 {
+            font-family: 'Grenze Gotisch', cursive;
+            color: #6b2e2e;
+            font-size: 1.3rem;
+            margin-bottom: 12px;
+        }
+
+        .billing-option {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .billing-option input[type="radio"] {
+            accent-color: #8b3a3a;
+            width: 18px;
+            height: 18px;
+        }
+
+        .billing-option label {
+            cursor: pointer;
+            color: #5a4a44;
+        }
+
+        .billing-other {
+            margin-top: 10px;
+            display: none;
+        }
+
+        .billing-other input {
+            width: 100%;
+            padding: 10px 12px;
+            border: 2px solid #e5d9c5;
+            border-radius: 6px;
+            font-family: 'EB Garamond', serif;
+            font-size: 1rem;
         }
 
         /* ---- RÉCAPITULATIF ---- */
@@ -276,7 +352,7 @@
             display: none;
         }
 
-        .summary-box .summary-row {
+        .summary-row {
             display: flex;
             justify-content: space-between;
             align-items: baseline;
@@ -284,10 +360,10 @@
             border-bottom: 1px dotted #ddd0c0;
             font-size: 1rem;
         }
-        .summary-box .summary-row:last-child {
+        .summary-row:last-child {
             border-bottom: none;
         }
-        .summary-box .summary-row.total {
+        .summary-row.total {
             font-weight: 700;
             font-size: 1.3rem;
             color: #6b2e2e;
@@ -295,8 +371,12 @@
             letter-spacing: 1px;
             margin-top: 4px;
         }
-        .summary-box .summary-row.tax {
+        .summary-row.tax {
             font-size: 0.92rem;
+            color: #7a6b5c;
+        }
+        .summary-row.quantity {
+            font-size: 0.95rem;
             color: #7a6b5c;
         }
 
@@ -331,27 +411,35 @@
             color: #e8e3da;
         }
 
+        .form-error {
+            color: #c0392b;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-top: 4px;
+            display: none;
+        }
+
         /* ---- FOOTER ---- */
         .site-footer {
+            background: #e5d9ce;
+            border-top: 3px solid #8b3a3a;
             text-align: center;
-            padding: 18px;
-            color: #8b7d6e;
+            padding: 18px 20px;
+            color: #5a4a44;
             font-size: 0.85rem;
             letter-spacing: 2px;
             width: 100%;
             margin-top: auto;
+            flex-shrink: 0;
         }
 
         @media (max-width: 550px) {
-            .option-card {
-                flex-wrap: wrap;
-            }
-            .option-card .option-price {
-                margin-left: 38px;
-                margin-top: 6px;
-            }
             .payment-body {
-                padding: 20px 18px;
+                padding: 20px 16px;
+            }
+            .form-row {
+                flex-direction: column;
+                gap: 10px;
             }
         }
     </style>
@@ -360,57 +448,61 @@
 
     <div class="payment-card">
 
-        <!-- En-tête -->
         <div class="payment-header">
             <div class="logo">Les Lames de Fer</div>
             <div class="subtitle">Paiement sécurisé</div>
         </div>
 
-        <!-- Corps -->
         <div class="payment-body">
             <h2>Inscription à l'événement</h2>
             <p class="intro">
-                Choisissez votre formule et procédez au règlement.<br>
-                Tous les prix sont indiqués <strong>hors taxes</strong>. Une taxe de <strong>10 %</strong> (Dodo Payment) sera ajoutée au total.
+                Sélectionnez votre formule, indiquez le nombre de participants et remplissez les informations pour chacun.<br>
+                Tous les prix sont <strong>hors taxes</strong>. Une taxe de <strong>10 %</strong> (Dodo Payment) est appliquée.
             </p>
 
-            <!-- Options -->
-            <div class="option-group" id="option-group">
+            <!-- Sélection formule + quantité -->
+            <div class="formula-selector">
+                <label for="formula-select">Formule choisie</label>
+                <select id="formula-select">
+                    <option value="35" data-label="Première participation + Événement">Première participation + Événement — 35,00 € HT / personne</option>
+                </select>
 
-                <!-- Première participation + événement (35 €) - disponible -->
-                <div class="option-card" data-value="35" data-label="Première participation + Événement" data-key="first">
-                    <div class="radio-circle"></div>
-                    <div class="option-content">
-                        <div class="option-name">Première participation + Événement</div>
-                        <div class="option-desc">Adhésion (30 €) + participation à l'événement (5 €)</div>
-                    </div>
-                    <div class="option-price">35,00 €</div>
+                <label style="margin-top: 12px;">Nombre de participants</label>
+                <div class="quantity-selector">
+                    <button type="button" id="qty-minus">−</button>
+                    <span class="qty-display" id="qty-display">1</span>
+                    <button type="button" id="qty-plus">+</button>
                 </div>
-
-                <!-- Événement seul (5 €) - réservé aux habitués -->
-                <div class="option-card disabled" data-value="5" data-label="Événement seul" data-key="returning">
-                    <div class="radio-circle"></div>
-                    <div class="option-content">
-                        <div class="option-name">Événement seul</div>
-                        <div class="option-desc">Tarif réservé aux participants habitués</div>
-                        <div class="locked-badge">Accessible après votre première participation</div>
-                    </div>
-                    <div class="option-price">5,00 €</div>
-                </div>
-
             </div>
 
-            <!-- Email -->
-            <div class="email-field">
-                <label for="billing-email">Adresse email de facturation</label>
-                <input type="email" id="billing-email" placeholder="exemple@email.com" autocomplete="email">
-                <div class="email-error" id="email-error">Veuillez saisir une adresse email valide.</div>
+            <!-- Participants -->
+            <div class="participants-section" id="participants-container">
+                <!-- Rempli dynamiquement -->
+            </div>
+
+            <!-- Email de facturation -->
+            <div class="billing-section" id="billing-section">
+                <h3>Email de facturation</h3>
+                <div id="billing-options">
+                    <!-- Rempli dynamiquement -->
+                </div>
+                <div class="billing-option">
+                    <input type="radio" name="billing-email" id="billing-other-radio" value="other">
+                    <label for="billing-other-radio">Utiliser une autre adresse</label>
+                </div>
+                <div class="billing-other" id="billing-other-input">
+                    <input type="email" id="billing-other-email" placeholder="Autre adresse email">
+                </div>
             </div>
 
             <!-- Récapitulatif -->
             <div class="summary-box" id="summary">
+                <div class="summary-row quantity">
+                    <span id="summary-formula">—</span>
+                    <span id="summary-qty">—</span>
+                </div>
                 <div class="summary-row">
-                    <span id="summary-label">—</span>
+                    <span>Sous-total HT</span>
                     <span id="summary-base">—</span>
                 </div>
                 <div class="summary-row tax">
@@ -423,7 +515,6 @@
                 </div>
             </div>
 
-            <!-- Bouton -->
             <button id="pay-button" class="btn-pay" disabled>
                 Payer avec Dodo Payment
             </button>
@@ -439,96 +530,310 @@
             'use strict';
 
             const TAX_RATE = 0.10;
+            const PRICE_PER_PERSON = 35; // Prix unique pour l'instant
 
-            const optionCards = document.querySelectorAll('.option-card:not(.disabled)');
-            const emailInput = document.getElementById('billing-email');
-            const emailError = document.getElementById('email-error');
-            const payButton = document.getElementById('pay-button');
+            // --- Éléments DOM ---
+            const qtyDisplay = document.getElementById('qty-display');
+            const qtyMinus = document.getElementById('qty-minus');
+            const qtyPlus = document.getElementById('qty-plus');
+            const participantsContainer = document.getElementById('participants-container');
+            const billingOptionsDiv = document.getElementById('billing-options');
+            const billingOtherRadio = document.getElementById('billing-other-radio');
+            const billingOtherInput = document.getElementById('billing-other-input');
+            const billingOtherEmail = document.getElementById('billing-other-email');
             const summaryBox = document.getElementById('summary');
-            const summaryLabel = document.getElementById('summary-label');
-            const summaryBase = document.getElementById('summary-base');
-            const summaryTax = document.getElementById('summary-tax');
-            const summaryTotal = document.getElementById('summary-total');
+            const payButton = document.getElementById('pay-button');
+            const formulaSelect = document.getElementById('formula-select');
 
-            let selectedValue = null;
-            let selectedLabel = '';
+            let quantity = 1;
 
+            // --- Formatage euro ---
             function formatEuro(amount) {
                 return amount.toFixed(2).replace('.', ',') + ' €';
             }
 
+            // --- Validation email ---
             function validateEmail(email) {
                 return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
             }
 
+            // --- Mise à jour récapitulatif ---
             function updateSummary() {
-                if (!selectedValue) {
-                    summaryBox.style.display = 'none';
-                    return;
-                }
-                const baseHT = parseFloat(selectedValue);
+                const pricePerPerson = parseFloat(formulaSelect.value);
+                const baseHT = pricePerPerson * quantity;
                 const taxAmount = baseHT * TAX_RATE;
                 const totalTTC = baseHT + taxAmount;
 
-                summaryLabel.textContent = selectedLabel + ' (HT)';
-                summaryBase.textContent = formatEuro(baseHT);
-                summaryTax.textContent = formatEuro(taxAmount);
-                summaryTotal.textContent = formatEuro(totalTTC);
+                document.getElementById('summary-formula').textContent = formulaSelect.options[formulaSelect.selectedIndex].getAttribute('data-label');
+                document.getElementById('summary-qty').textContent = '× ' + quantity + ' participant' + (quantity > 1 ? 's' : '');
+                document.getElementById('summary-base').textContent = formatEuro(baseHT);
+                document.getElementById('summary-tax').textContent = formatEuro(taxAmount);
+                document.getElementById('summary-total').textContent = formatEuro(totalTTC);
                 summaryBox.style.display = 'block';
             }
 
-            function updateButtonState() {
-                const emailValid = validateEmail(emailInput.value.trim());
-                const optionSelected = selectedValue !== null;
+            // --- Génération des participants ---
+            function generateParticipants() {
+                const currentCards = participantsContainer.querySelectorAll('.participant-card');
+                const currentCount = currentCards.length;
 
-                emailError.style.display = (emailInput.value.trim() !== '' && !emailValid) ? 'block' : 'none';
-                payButton.disabled = !(optionSelected && emailValid);
+                if (quantity === currentCount) return;
+
+                if (quantity > currentCount) {
+                    for (let i = currentCount + 1; i <= quantity; i++) {
+                        const card = createParticipantCard(i);
+                        participantsContainer.appendChild(card);
+                    }
+                } else {
+                    for (let i = currentCount; i > quantity; i--) {
+                        const lastCard = participantsContainer.lastElementChild;
+                        if (lastCard) lastCard.remove();
+                    }
+                }
+                updateBillingOptions();
+                updateSummary();
+                validateAllFields();
             }
 
-            // Sélection des options (uniquement celles qui ne sont pas disabled)
-            optionCards.forEach(function(card) {
-                card.addEventListener('click', function() {
-                    // Retirer la sélection partout
-                    optionCards.forEach(c => c.classList.remove('selected'));
-                    // Sélectionner celle-ci
-                    card.classList.add('selected');
-                    selectedValue = card.getAttribute('data-value');
-                    selectedLabel = card.getAttribute('data-label');
-                    updateSummary();
-                    updateButtonState();
+            function createParticipantCard(index) {
+                const div = document.createElement('div');
+                div.className = 'participant-card';
+                div.setAttribute('data-index', index);
+                div.innerHTML = `
+                    <h3>Participant ${index}</h3>
+                    ${index > 1 ? '<button type="button" class="remove-participant" title="Retirer">✕</button>' : ''}
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Nom</label>
+                            <input type="text" class="p-lastname" placeholder="Nom" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Prénom</label>
+                            <input type="text" class="p-firstname" placeholder="Prénom" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="email" class="p-email" placeholder="email@exemple.com" required>
+                            <span class="form-error email-error">Email invalide</span>
+                        </div>
+                        <div class="form-group">
+                            <label>Téléphone</label>
+                            <input type="tel" class="p-phone" placeholder="06 XX XX XX XX" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Contact d'urgence (nom & téléphone)</label>
+                            <input type="text" class="p-emergency" placeholder="Nom et téléphone" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Âge</label>
+                            <input type="number" class="p-age" placeholder="Âge" min="1" max="99" required>
+                        </div>
+                    </div>
+                    <div class="minor-section">
+                        <p>⚠️ Participant mineur — Consentement parental obligatoire</p>
+                        <div class="checkbox-minor">
+                            <input type="checkbox" class="minor-consent" id="minor-consent-${index}">
+                            <label for="minor-consent-${index}">Je certifie être le représentant légal et avoir lu le règlement.</label>
+                        </div>
+                        <div class="checkbox-minor">
+                            <input type="checkbox" class="minor-read" id="minor-read-${index}">
+                            <label for="minor-read-${index}">Le participant mineur reconnaît avoir pris connaissance du règlement.</label>
+                        </div>
+                    </div>
+                `;
+
+                // Gestion de l'âge : afficher/cacher la section mineur
+                const ageInput = div.querySelector('.p-age');
+                const minorSection = div.querySelector('.minor-section');
+                ageInput.addEventListener('input', function() {
+                    const age = parseInt(ageInput.value);
+                    if (!isNaN(age) && age < 18) {
+                        minorSection.style.display = 'block';
+                    } else {
+                        minorSection.style.display = 'none';
+                    }
+                    validateAllFields();
                 });
+
+                // Bouton retirer
+                const removeBtn = div.querySelector('.remove-participant');
+                if (removeBtn) {
+                    removeBtn.addEventListener('click', function() {
+                        if (quantity > 1) {
+                            quantity--;
+                            qtyDisplay.textContent = quantity;
+                            generateParticipants();
+                        }
+                    });
+                }
+
+                // Validation des champs en temps réel
+                div.querySelectorAll('input').forEach(input => {
+                    input.addEventListener('input', validateAllFields);
+                });
+
+                return div;
+            }
+
+            // --- Mise à jour des options d'email de facturation ---
+            function updateBillingOptions() {
+                const cards = participantsContainer.querySelectorAll('.participant-card');
+                const emails = [];
+                cards.forEach(card => {
+                    const emailInput = card.querySelector('.p-email');
+                    if (emailInput && emailInput.value.trim() && validateEmail(emailInput.value.trim())) {
+                        emails.push(emailInput.value.trim());
+                    }
+                });
+
+                billingOptionsDiv.innerHTML = '';
+                emails.forEach((email, i) => {
+                    const optionDiv = document.createElement('div');
+                    optionDiv.className = 'billing-option';
+                    const radioId = 'billing-email-' + i;
+                    optionDiv.innerHTML = `
+                        <input type="radio" name="billing-email" id="${radioId}" value="${email}" ${i === 0 ? 'checked' : ''}>
+                        <label for="${radioId}">${email}</label>
+                    `;
+                    billingOptionsDiv.appendChild(optionDiv);
+                });
+
+                // Ajouter l'option "Autre"
+                if (billingOtherRadio.checked) {
+                    billingOtherInput.style.display = 'block';
+                }
+
+                // Réinitialiser l'option autre si plus aucun email
+                if (emails.length === 0) {
+                    billingOtherRadio.checked = true;
+                    billingOtherInput.style.display = 'block';
+                }
+            }
+
+            billingOtherRadio.addEventListener('change', function() {
+                billingOtherInput.style.display = this.checked ? 'block' : 'none';
             });
 
-            emailInput.addEventListener('input', updateButtonState);
+            // Met à jour les emails quand on modifie un champ
+            participantsContainer.addEventListener('input', function(e) {
+                if (e.target.classList.contains('p-email')) {
+                    updateBillingOptions();
+                }
+            });
 
+            // --- Validation complète ---
+            function validateAllFields() {
+                let allValid = true;
+                const cards = participantsContainer.querySelectorAll('.participant-card');
+
+                cards.forEach(card => {
+                    const lastname = card.querySelector('.p-lastname');
+                    const firstname = card.querySelector('.p-firstname');
+                    const email = card.querySelector('.p-email');
+                    const phone = card.querySelector('.p-phone');
+                    const emergency = card.querySelector('.p-emergency');
+                    const age = card.querySelector('.p-age');
+
+                    // Vérification basique
+                    if (!lastname || !lastname.value.trim()) allValid = false;
+                    if (!firstname || !firstname.value.trim()) allValid = false;
+                    if (!phone || !phone.value.trim()) allValid = false;
+                    if (!emergency || !emergency.value.trim()) allValid = false;
+                    if (!age || !age.value || isNaN(parseInt(age.value))) allValid = false;
+
+                    // Email
+                    const emailError = card.querySelector('.email-error');
+                    if (email && email.value.trim()) {
+                        if (!validateEmail(email.value.trim())) {
+                            if (emailError) emailError.style.display = 'block';
+                            allValid = false;
+                        } else {
+                            if (emailError) emailError.style.display = 'none';
+                        }
+                    } else {
+                        allValid = false;
+                    }
+
+                    // Mineur
+                    const ageVal = age ? parseInt(age.value) : 18;
+                    if (!isNaN(ageVal) && ageVal < 18) {
+                        const consent = card.querySelector('.minor-consent');
+                        const read = card.querySelector('.minor-read');
+                        if (!consent || !consent.checked) allValid = false;
+                        if (!read || !read.checked) allValid = false;
+                    }
+                });
+
+                // Email facturation
+                const selectedBilling = document.querySelector('input[name="billing-email"]:checked');
+                if (!selectedBilling) {
+                    allValid = false;
+                } else if (selectedBilling.value === 'other') {
+                    const otherEmail = billingOtherEmail.value.trim();
+                    if (!otherEmail || !validateEmail(otherEmail)) {
+                        allValid = false;
+                    }
+                }
+
+                payButton.disabled = !allValid;
+            }
+
+            // --- Écouteurs quantité ---
+            qtyPlus.addEventListener('click', function() {
+                quantity++;
+                qtyDisplay.textContent = quantity;
+                generateParticipants();
+            });
+
+            qtyMinus.addEventListener('click', function() {
+                if (quantity > 1) {
+                    quantity--;
+                    qtyDisplay.textContent = quantity;
+                    generateParticipants();
+                }
+            });
+
+            formulaSelect.addEventListener('change', updateSummary);
+
+            // Validation continue
+            document.addEventListener('input', validateAllFields);
+            document.addEventListener('change', validateAllFields);
+
+            // --- Paiement ---
             payButton.addEventListener('click', function() {
                 if (payButton.disabled) return;
 
-                const email = emailInput.value.trim();
-                if (!validateEmail(email)) {
-                    emailError.style.display = 'block';
-                    return;
-                }
-
-                const baseHT = parseFloat(selectedValue);
+                const pricePerPerson = parseFloat(formulaSelect.value);
+                const baseHT = pricePerPerson * quantity;
                 const taxAmount = baseHT * TAX_RATE;
                 const totalTTC = baseHT + taxAmount;
+
+                let billingEmail = '';
+                const selectedBilling = document.querySelector('input[name="billing-email"]:checked');
+                if (selectedBilling && selectedBilling.value !== 'other') {
+                    billingEmail = selectedBilling.value;
+                } else {
+                    billingEmail = billingOtherEmail.value.trim();
+                }
 
                 const paymentUrl = new URL('https://payment.dodo.com/pay');
                 paymentUrl.searchParams.append('amount', totalTTC.toFixed(2));
                 paymentUrl.searchParams.append('currency', 'EUR');
-                paymentUrl.searchParams.append('description', selectedLabel + ' - Les Lames de Fer');
-                paymentUrl.searchParams.append('email', email);
+                paymentUrl.searchParams.append('description', formulaSelect.options[formulaSelect.selectedIndex].getAttribute('data-label') + ' ×' + quantity + ' - Les Lames de Fer');
+                paymentUrl.searchParams.append('email', billingEmail);
                 paymentUrl.searchParams.append('tax', taxAmount.toFixed(2));
                 paymentUrl.searchParams.append('tax_rate', (TAX_RATE * 100).toFixed(0));
 
                 window.location.href = paymentUrl.toString();
             });
 
-            // Sélection par défaut : première option disponible
-            if (optionCards.length > 0) {
-                optionCards[0].click();
-            }
+            // --- Initialisation ---
+            generateParticipants();
+            updateSummary();
 
         })();
     </script>
