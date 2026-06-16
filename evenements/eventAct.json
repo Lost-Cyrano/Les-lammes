@@ -1,74 +1,74 @@
 [
-                {
-                    id: 101,
-                    title: "Tournoi de Printemps",
-                    date: "2026-05-15",
-                    places: 12,
-                    price_new: 35,
-                    price_returning: 5,
-                    image: "https://picsum.photos/id/84/600/400",
-                    categories: ["Armes courtes et bâtardes", "Duel", "Bataille"],
-                    address: "Champ de Mars, 75007 Paris",
-                    mapUrl: "https://www.openstreetmap.org/export/embed.html?bbox=2.294,48.856,2.300,48.860&layer=mapnik&marker=48.858,2.297"
-                },
-                {
-                    id: 102,
-                    title: "Duel des Lames d'Argent",
-                    date: "2026-06-02",
-                    places: 8,
-                    price_new: 35,
-                    price_returning: 5,
-                    image: "https://picsum.photos/id/55/600/400",
-                    categories: ["Armes longues et d'hast", "Duel"],
-                    address: "Salle d'armes de la Bastille, 75011 Paris",
-                    mapUrl: "https://www.openstreetmap.org/export/embed.html?bbox=2.368,48.852,2.374,48.856&layer=mapnik&marker=48.853,2.371"
-                },
-                {
-                    id: 103,
-                    title: "Mêlée du Solstice",
-                    date: "2026-06-21",
-                    places: 24,
-                    price_new: 35,
-                    price_returning: 5,
-                    image: "https://picsum.photos/id/174/600/400",
-                    categories: ["Armes doubles et flexibles", "Bataille", "Massacre"],
-                    address: "Bois de Vincennes, Route de la Pyramide, 75012 Paris",
-                    mapUrl: "https://www.openstreetmap.org/export/embed.html?bbox=2.406,48.828,2.412,48.832&layer=mapnik&marker=48.830,2.409"
-                },
-                {
-                    id: 104,
-                    title: "Troïka des Fervents",
-                    date: "2026-07-10",
-                    places: 6,
-                    price_new: 35,
-                    price_returning: 5,
-                    image: "https://picsum.photos/id/32/600/400",
-                    categories: ["Armes courtes et bâtardes", "Troïka"],
-                    address: "Gymnase Jean-Jaurès, 93100 Montreuil",
-                    mapUrl: "https://www.openstreetmap.org/export/embed.html?bbox=2.442,48.860,2.448,48.864&layer=mapnik&marker=48.862,2.445"
-                },
-                {
-                    id: 105,
-                    title: "Combat en Rang d'Été",
-                    date: "2026-07-25",
-                    places: 16,
-                    price_new: 35,
-                    price_returning: 5,
-                    image: "https://picsum.photos/id/41/600/400",
-                    categories: ["Armes longues et d'hast", "Combat en rang"],
-                    address: "Parc de la Villette, 75019 Paris",
-                    mapUrl: "https://www.openstreetmap.org/export/embed.html?bbox=2.384,48.892,2.390,48.896&layer=mapnik&marker=48.894,2.387"
-                },
-                {
-                    id: 106,
-                    title: "Massacre de la Saint-Michel",
-                    date: "2026-09-29",
-                    places: 30,
-                    price_new: 35,
-                    price_returning: 5,
-                    image: "https://picsum.photos/id/63/600/400",
-                    categories: ["Armes doubles et flexibles", "Massacre"],
-                    address: "Esplanade du Château de Vincennes, 94300 Vincennes",
-                    mapUrl: "https://www.openstreetmap.org/export/embed.html?bbox=2.432,48.840,2.438,48.844&layer=mapnik&marker=48.842,2.435"
-                }
-            ];
+    {
+        "id": 101,
+        "title": "Tournoi de Printemps",
+        "date": "2026-05-15",
+        "places": 12,
+        "price_new": 35,
+        "price_returning": 5,
+        "image": "https://picsum.photos/id/84/600/400",
+        "categories": ["Armes courtes et bâtardes", "Duel", "Bataille"],
+        "address": "Champ de Mars, 75007 Paris",
+        "mapUrl": "https://www.openstreetmap.org/export/embed.html?bbox=2.294,48.856,2.300,48.860&layer=mapnik&marker=48.858,2.297"
+    },
+    {
+        "id": 102,
+        "title": "Duel des Lames d'Argent",
+        "date": "2026-06-02",
+        "places": 8,
+        "price_new": 35,
+        "price_returning": 5,
+        "image": "https://picsum.photos/id/55/600/400",
+        "categories": ["Armes longues et d'hast", "Duel"],
+        "address": "Salle d'armes de la Bastille, 75011 Paris",
+        "mapUrl": "https://www.openstreetmap.org/export/embed.html?bbox=2.368,48.852,2.374,48.856&layer=mapnik&marker=48.853,2.371"
+    },
+    {
+        "id": 103,
+        "title": "Mêlée du Solstice",
+        "date": "2026-06-21",
+        "places": 24,
+        "price_new": 35,
+        "price_returning": 5,
+        "image": "https://picsum.photos/id/174/600/400",
+        "categories": ["Armes doubles et flexibles", "Bataille", "Massacre"],
+        "address": "Bois de Vincennes, Route de la Pyramide, 75012 Paris",
+        "mapUrl": "https://www.openstreetmap.org/export/embed.html?bbox=2.406,48.828,2.412,48.832&layer=mapnik&marker=48.830,2.409"
+    },
+    {
+        "id": 104,
+        "title": "Troïka des Fervents",
+        "date": "2026-07-10",
+        "places": 6,
+        "price_new": 35,
+        "price_returning": 5,
+        "image": "https://picsum.photos/id/32/600/400",
+        "categories": ["Armes courtes et bâtardes", "Troïka"],
+        "address": "Gymnase Jean-Jaurès, 93100 Montreuil",
+        "mapUrl": "https://www.openstreetmap.org/export/embed.html?bbox=2.442,48.860,2.448,48.864&layer=mapnik&marker=48.862,2.445"
+    },
+    {
+        "id": 105,
+        "title": "Combat en Rang d'Été",
+        "date": "2026-07-25",
+        "places": 16,
+        "price_new": 35,
+        "price_returning": 5,
+        "image": "https://picsum.photos/id/41/600/400",
+        "categories": ["Armes longues et d'hast", "Combat en rang"],
+        "address": "Parc de la Villette, 75019 Paris",
+        "mapUrl": "https://www.openstreetmap.org/export/embed.html?bbox=2.384,48.892,2.390,48.896&layer=mapnik&marker=48.894,2.387"
+    },
+    {
+        "id": 106,
+        "title": "Massacre de la Saint-Michel",
+        "date": "2026-09-29",
+        "places": 30,
+        "price_new": 35,
+        "price_returning": 5,
+        "image": "https://picsum.photos/id/63/600/400",
+        "categories": ["Armes doubles et flexibles", "Massacre"],
+        "address": "Esplanade du Château de Vincennes, 94300 Vincennes",
+        "mapUrl": "https://www.openstreetmap.org/export/embed.html?bbox=2.432,48.840,2.438,48.844&layer=mapnik&marker=48.842,2.435"
+    }
+]
