@@ -51,54 +51,15 @@
         .event-card-meta {
             display: flex;
             flex-wrap: wrap;
-            gap: 8px 20px;
+            gap: 12px 20px;
             font-size: 0.9rem;
             color: var(--brun-texte);
-            margin-bottom: 6px;
+            margin-bottom: 12px;
         }
         .event-card-meta span {
             display: flex;
             align-items: center;
             gap: 6px;
-        }
-        .event-card-meta i {
-            font-style: normal;
-            display: inline-block;
-            width: 18px;
-            text-align: center;
-        }
-        .event-address {
-            font-size: 0.85rem;
-            color: var(--brun-doux);
-            margin-bottom: 10px;
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            gap: 8px 12px;
-        }
-        .event-address .addr-text {
-            font-style: italic;
-        }
-        .addr-actions {
-            display: flex;
-            gap: 8px;
-            flex-wrap: wrap;
-        }
-        .addr-actions a, .addr-actions button {
-            font-size: 0.75rem;
-            padding: 2px 10px;
-            border: 1px solid var(--bordure-claire);
-            border-radius: 20px;
-            background: var(--beige-fond);
-            color: var(--brun-texte);
-            text-decoration: none;
-            cursor: pointer;
-            transition: background 0.2s;
-            font-family: 'EB Garamond', serif;
-            line-height: 1.6;
-        }
-        .addr-actions a:hover, .addr-actions button:hover {
-            background: var(--bordure-claire);
         }
         .event-card-categories {
             display: flex;
@@ -115,34 +76,66 @@
             color: var(--brun-texte);
             font-weight: 500;
         }
+
+        /* Style du prix - harmonisé avec le thème */
         .event-card-prices {
             display: flex;
-            align-items: baseline;
-            gap: 24px;
-            margin-bottom: 16px;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 14px;
             flex-wrap: wrap;
         }
-        .price-item {
+        .price-main {
             display: flex;
-            align-items: baseline;
-            gap: 4px;
+            align-items: center;
+            gap: 6px;
+            cursor: pointer;
+            user-select: none;
+            background: var(--beige-fond);
+            padding: 4px 16px 4px 12px;
+            border-radius: 30px;
+            border: 1px solid var(--bordure-claire);
+            transition: background 0.2s, border-color 0.2s;
+        }
+        .price-main:hover {
+            background: #ede7df;
+            border-color: var(--brun-doux);
         }
         .price-amount {
             font-weight: 700;
             color: var(--rouge-fonce);
-            font-size: 1.2rem;
+            font-size: 1.4rem;
+            line-height: 1.4;
         }
-        .price-amount.highlight {
-            color: var(--rouge-vif);
-            font-size: 1.6rem;
-            background: rgba(139,58,58,0.1);
-            padding: 0 8px;
+        .price-asterisk {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--brun-texte);
+            transition: transform 0.3s;
+            display: inline-block;
+        }
+        .price-asterisk.active {
+            transform: rotate(45deg);
+        }
+        .price-footnote {
+            font-size: 0.85rem;
+            color: var(--brun-texte);
+            font-style: italic;
+            padding: 8px 12px;
+            background: var(--beige-fond);
             border-radius: 4px;
+            border-left: 3px solid var(--rouge-vif);
+            margin-bottom: 14px;
+            display: none;
+            transition: opacity 0.3s ease;
         }
-        .price-label {
-            color: var(--brun-doux);
-            font-size: 0.8rem;
+        .price-footnote.open {
+            display: block;
         }
+        .price-footnote strong {
+            color: var(--rouge-fonce);
+        }
+
         .event-card-footer {
             margin-top: auto;
             display: flex;
@@ -181,42 +174,68 @@
             cursor: not-allowed;
         }
 
-        /* Filtres */
-        .filters-bar {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-            margin-bottom: 30px;
-            padding: 16px 20px;
-            background: var(--beige-carte);
-            border-radius: 8px;
-            border: 1px solid var(--bordure-claire);
-            align-items: center;
-        }
-        .filters-bar label {
-            font-weight: 600;
-            color: var(--brun-texte);
-            margin-right: 4px;
-            font-size: 0.9rem;
-        }
-        .filters-bar select,
-        .filters-bar input {
-            padding: 6px 12px;
-            border: 1px solid var(--bordure-claire);
-            border-radius: 4px;
-            font-family: 'EB Garamond', serif;
-            background: #fff;
-            color: var(--brun-fonce);
-        }
-        .filters-bar select:focus,
-        .filters-bar input:focus {
-            outline: none;
-            border-color: var(--rouge-vif);
-        }
-        .filter-group {
+        /* Adresse et carte */
+        .event-address-toggle {
+            font-size: 0.85rem;
+            color: var(--brun-doux);
+            margin-bottom: 8px;
             display: flex;
             align-items: center;
             gap: 8px;
+            cursor: pointer;
+            user-select: none;
+        }
+        .event-address-toggle:hover {
+            text-decoration: underline;
+        }
+        .event-address-toggle .addr-icon {
+            font-size: 1.1rem;
+        }
+        .address-panel {
+            display: none;
+            background: var(--beige-fond);
+            border: 1px solid var(--bordure-claire);
+            border-radius: 6px;
+            padding: 12px;
+            margin-bottom: 12px;
+            font-size: 0.9rem;
+        }
+        .address-panel.open {
+            display: block;
+        }
+        .addr-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 8px;
+        }
+        .addr-full {
+            font-weight: 600;
+            color: var(--brun-fonce);
+            word-break: break-word;
+        }
+        .copy-btn {
+            background: none;
+            border: 1px solid var(--bordure-claire);
+            border-radius: 4px;
+            padding: 2px 10px;
+            font-size: 0.75rem;
+            cursor: pointer;
+            font-family: 'EB Garamond', serif;
+            color: var(--brun-texte);
+            transition: background 0.2s;
+            white-space: nowrap;
+        }
+        .copy-btn:hover {
+            background: var(--bordure-claire);
+        }
+        .map-container iframe {
+            width: 100%;
+            height: 200px;
+            border: 0;
+            border-radius: 4px;
+            margin-top: 4px;
         }
 
         /* Aucun résultat */
@@ -226,7 +245,7 @@
             color: var(--brun-doux);
         }
 
-        /* Navigation - style commun */
+        /* Navigation */
         .nav-links {
             display: flex;
             gap: 1.5rem;
@@ -258,13 +277,6 @@
             .event-card-image {
                 height: 160px;
             }
-            .filters-bar {
-                flex-direction: column;
-                align-items: stretch;
-            }
-            .filter-group {
-                flex-wrap: wrap;
-            }
             .event-card-footer {
                 flex-direction: column;
                 align-items: stretch;
@@ -273,11 +285,22 @@
                 text-align: center;
             }
             .nav-links {
-                gap: 0.5rem;
+                flex-direction: column;
+                align-items: center;
+                gap: 5px;
             }
-            .nav-links a {
-                font-size: 0.95rem;
-                padding: 0.2rem 0.5rem;
+            .addr-row {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .map-container iframe {
+                height: 150px;
+            }
+            .price-main {
+                padding: 4px 12px 4px 10px;
+            }
+            .price-amount {
+                font-size: 1.2rem;
             }
         }
 
@@ -285,12 +308,11 @@
         .icon-calendar::before { content: "📅 "; }
         .icon-users::before { content: "👤 "; }
         .icon-tag::before { content: "🏷️ "; }
-        .icon-location::before { content: "📍 "; }
     </style>
 </head>
 <body>
 
-    <!-- En-tête avec navigation (corrigée) -->
+    <!-- En-tête avec navigation -->
     <header class="site-header">
         <span class="logo">Les Lames de Fer</span>
         <p class="subtitle">Groupe de passionnés de combats médiévaux</p>
@@ -309,30 +331,6 @@
                 Retrouvez ci-dessous tous nos prochains tournois et duels. Inscrivez-vous dès maintenant !
             </p>
 
-            <!-- Barre de filtres -->
-            <div class="filters-bar" id="filtersBar">
-                <div class="filter-group">
-                    <label for="filterCategory">Catégorie :</label>
-                    <select id="filterCategory">
-                        <option value="all">Toutes</option>
-                        <option value="armes-courtes">Armes courtes</option>
-                        <option value="armes-doubles">Armes doubles</option>
-                        <option value="armes-longues">Armes longues</option>
-                        <option value="duel">Duel</option>
-                        <option value="alliance">Duel en alliance</option>
-                        <option value="troika">Troïka</option>
-                        <option value="rang">Combat en rang</option>
-                        <option value="bataille">Bataille</option>
-                        <option value="massacre">Massacre</option>
-                    </select>
-                </div>
-                <div class="filter-group">
-                    <label for="filterDate">Date :</label>
-                    <input type="date" id="filterDate">
-                </div>
-                <button class="btn btn-sm btn-outline" id="resetFilters">Réinitialiser</button>
-            </div>
-
             <!-- Grille des événements -->
             <div id="eventsGrid" class="card-grid">
                 <!-- Les cartes seront générées par JavaScript -->
@@ -340,7 +338,7 @@
 
             <!-- Message si aucun événement -->
             <div id="noResults" class="no-results hidden">
-                <p>Aucun événement ne correspond à vos critères.</p>
+                <p>Aucun événement à venir pour le moment.</p>
             </div>
         </div>
     </main>
@@ -353,102 +351,57 @@
     <script>
         (function() {
             // ------------------------------------------------------------
-            // 1. DONNÉES JSON intégrées (exemple) avec adresses et ID
-            // ------------------------------------------------------------
-            const eventsData = [
-                {
-                    id: 101,
-                    title: "Tournoi de Printemps",
-                    date: "2026-05-15",
-                    places: 12,
-                    price_new: 35,
-                    price_returning: 5,
-                    image: "https://picsum.photos/id/84/600/400",
-                    categories: ["Armes courtes et bâtardes", "Duel", "Bataille"],
-                    description: "Le grand tournoi du printemps, ouvert à toutes les armes courtes.",
-                    adresse: "Salle des Lames, 12 rue du Château, 75001 Paris"
-                },
-                {
-                    id: 102,
-                    title: "Duel des Lames d'Argent",
-                    date: "2026-06-02",
-                    places: 8,
-                    price_new: 35,
-                    price_returning: 5,
-                    image: "https://picsum.photos/id/55/600/400",
-                    categories: ["Armes longues et d'hast", "Duel"],
-                    description: "Combat en duel avec armes d'hast.",
-                    adresse: "Arène Médiévale, 5 place de la Victoire, 69000 Lyon"
-                },
-                {
-                    id: 103,
-                    title: "Mêlée du Solstice",
-                    date: "2026-06-21",
-                    places: 24,
-                    price_new: 35,
-                    price_returning: 5,
-                    image: "https://picsum.photos/id/174/600/400",
-                    categories: ["Armes doubles et flexibles", "Bataille", "Massacre"],
-                    description: "Grande mêlée pour célébrer le solstice d'été.",
-                    adresse: "Camp des Férus, chemin des Crêtes, 13000 Marseille"
-                },
-                {
-                    id: 104,
-                    title: "Troïka des Fervents",
-                    date: "2026-07-10",
-                    places: 6,
-                    price_new: 35,
-                    price_returning: 5,
-                    image: "https://picsum.photos/id/32/600/400",
-                    categories: ["Armes courtes et bâtardes", "Troïka"],
-                    description: "Combat en équipe de 3, armes courtes autorisées.",
-                    adresse: "Dojo des Vieux-Arts, 8 allée des Tanneurs, 44000 Nantes"
-                },
-                {
-                    id: 105,
-                    title: "Combat en Rang d'Été",
-                    date: "2026-07-25",
-                    places: 16,
-                    price_new: 35,
-                    price_returning: 5,
-                    image: "https://picsum.photos/id/41/600/400",
-                    categories: ["Armes longues et d'hast", "Combat en rang"],
-                    description: "Formation en rang, armes d'hast de rigueur.",
-                    adresse: "Parc des Expositions, hall 3, 59000 Lille"
-                },
-                {
-                    id: 106,
-                    title: "Massacre de la Saint-Michel",
-                    date: "2026-09-29",
-                    places: 30,
-                    price_new: 35,
-                    price_returning: 5,
-                    image: "https://picsum.photos/id/63/600/400",
-                    categories: ["Armes doubles et flexibles", "Massacre"],
-                    description: "Grande bataille en +6 contre +6, tous niveaux.",
-                    adresse: "Plaine de la Bataille, route de l'Épée, 31000 Toulouse"
-                }
-            ];
-
-            // ------------------------------------------------------------
-            // 2. RÉFÉRENCES DOM
+            // 1. RÉFÉRENCES DOM
             // ------------------------------------------------------------
             const grid = document.getElementById('eventsGrid');
             const noResults = document.getElementById('noResults');
-            const filterCategory = document.getElementById('filterCategory');
-            const filterDate = document.getElementById('filterDate');
-            const resetBtn = document.getElementById('resetFilters');
 
             // ------------------------------------------------------------
-            // 3. FONCTIONS
+            // 2. FONCTIONS UTILITAIRES
             // ------------------------------------------------------------
             function formatDate(dateStr) {
                 const options = { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' };
                 return new Date(dateStr).toLocaleDateString('fr-FR', options);
             }
 
+            function toggleAddress(panelId) {
+                const panel = document.getElementById(panelId);
+                if (panel) {
+                    panel.classList.toggle('open');
+                }
+            }
+
+            function copyAddress(address) {
+                navigator.clipboard.writeText(address).then(() => {
+                    alert('Adresse copiée : ' + address);
+                }).catch(() => {
+                    // Fallback
+                    const textarea = document.createElement('textarea');
+                    textarea.value = address;
+                    document.body.appendChild(textarea);
+                    textarea.select();
+                    document.execCommand('copy');
+                    document.body.removeChild(textarea);
+                    alert('Adresse copiée : ' + address);
+                });
+            }
+
+            function toggleFootnote(footnoteId, asteriskId) {
+                const footnote = document.getElementById(footnoteId);
+                const asterisk = document.getElementById(asteriskId);
+                if (footnote) {
+                    footnote.classList.toggle('open');
+                }
+                if (asterisk) {
+                    asterisk.classList.toggle('active');
+                }
+            }
+
             function renderEvents(events) {
-                if (events.length === 0) {
+                // Trier par date chronologique
+                const sorted = [...events].sort((a, b) => new Date(a.date) - new Date(b.date));
+
+                if (sorted.length === 0) {
                     grid.innerHTML = '';
                     noResults.classList.remove('hidden');
                     return;
@@ -456,7 +409,7 @@
                 noResults.classList.add('hidden');
 
                 let html = '';
-                events.forEach(ev => {
+                sorted.forEach(ev => {
                     const dateFormatted = formatDate(ev.date);
                     const categoriesHtml = ev.categories.map(cat =>
                         `<span class="category-tag">${cat}</span>`
@@ -464,41 +417,42 @@
 
                     const isFull = ev.places <= 0;
                     const placesText = isFull ? 'Complet' : `${ev.places} places restantes`;
-
-                    // Construction de l'affichage de l'adresse
-                    const addressLink = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(ev.adresse)}`;
-                    const addressHtml = `
-                        <div class="event-address">
-                            <span class="addr-text"><span class="icon-location"></span> ${ev.adresse}</span>
-                            <span class="addr-actions">
-                                <a href="${addressLink}" target="_blank" rel="noopener">Voir sur la carte</a>
-                                <button class="copy-address" data-address="${ev.adresse}">Copier</button>
-                            </span>
-                        </div>
-                    `;
+                    const panelId = `addr-panel-${ev.id}`;
+                    const footnoteId = `footnote-${ev.id}`;
+                    const asteriskId = `asterisk-${ev.id}`;
 
                     html += `
                         <div class="event-card" data-id="${ev.id}">
                             <div class="event-card-image" style="background-image: url('${ev.image}');">
-                                <!-- Pastille "Disponible" supprimée -->
                             </div>
                             <div class="event-card-body">
                                 <h3 class="event-card-title">${ev.title}</h3>
                                 <div class="event-card-meta">
                                     <span><span class="icon-calendar"></span> ${dateFormatted}</span>
                                 </div>
-                                ${addressHtml}
                                 <div class="event-card-categories">
                                     ${categoriesHtml}
                                 </div>
                                 <div class="event-card-prices">
-                                    <div class="price-item">
-                                        <span class="price-amount highlight">${ev.price_returning}€</span>
-                                        <span class="price-label">(déjà participant)</span>
+                                    <div class="price-main" onclick="toggleFootnote('${footnoteId}', '${asteriskId}')">
+                                        <span class="price-amount">5€</span>
+                                        <span class="price-asterisk" id="${asteriskId}">*</span>
                                     </div>
-                                    <div class="price-item">
-                                        <span class="price-amount">${ev.price_new}€</span>
-                                        <span class="price-label">(nouveau)</span>
+                                </div>
+                                <div class="price-footnote" id="${footnoteId}">
+                                    * Offre valable uniquement pour les participants ayant déjà participé à un événement. Pour les nouveaux, le coût est de <strong>35€</strong> (5€ d'événement + 30€ de frais de première participation).
+                                </div>
+                                <div class="event-address-toggle" onclick="toggleAddress('${panelId}')">
+                                    <span class="addr-icon">📍</span>
+                                    <span>Voir l'adresse</span>
+                                </div>
+                                <div id="${panelId}" class="address-panel">
+                                    <div class="addr-row">
+                                        <button class="copy-btn" onclick="copyAddress('${ev.address}')">📋 Copier</button>
+                                        <span class="addr-full">${ev.address}</span>
+                                    </div>
+                                    <div class="map-container">
+                                        <iframe src="${ev.mapUrl}" width="100%" height="200" style="border:0; border-radius: 4px;" allowfullscreen="" loading="lazy"></iframe>
                                     </div>
                                 </div>
                                 <div class="event-card-footer">
@@ -512,12 +466,65 @@
                     `;
                 });
                 grid.innerHTML = html;
+            }
 
-                // Attacher les événements de copie d'adresse
-                document.querySelectorAll('.copy-address').forEach(btn => {
-                    btn.addEventListener('click', function(e) {
-                        e.stopPropagation();
-                        const addr = this.getAttribute('data-address');
-                        navigator.clipboard.writeText(addr).then(() => {
-                            const originalText = this.textContent;
-                            this.
+            // ------------------------------------------------------------
+            // 3. GESTION DU CLIC SUR "RÉSERVER"
+            // ------------------------------------------------------------
+            function handleReservation(eventId) {
+                window.location.href = `https://lost-cyrano.github.io/Les-lammes/registering/rules?eventId=${eventId}`;
+            }
+
+            // ------------------------------------------------------------
+            // 4. CHARGEMENT DES DONNÉES DEPUIS LE FICHIER JSON
+            // ------------------------------------------------------------
+            function loadEvents() {
+                fetch('./eventAct.json')
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error(`Erreur HTTP : ${response.status}`);
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        // On suppose que le JSON contient un tableau d'événements
+                        if (Array.isArray(data)) {
+                            renderEvents(data);
+                        } else {
+                            console.error('Le fichier JSON ne contient pas un tableau.');
+                            grid.innerHTML = '<p class="no-results">Erreur de chargement des événements.</p>';
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Erreur lors du chargement du fichier JSON :', error);
+                        grid.innerHTML = '<p class="no-results">Impossible de charger les événements. Veuillez réessayer plus tard.</p>';
+                    });
+            }
+
+            // ------------------------------------------------------------
+            // 5. INITIALISATION
+            // ------------------------------------------------------------
+            // Délégation pour les boutons "Réserver"
+            grid.addEventListener('click', function(e) {
+                const btn = e.target.closest('.btn-reserver');
+                if (btn && !btn.disabled) {
+                    const eventId = parseInt(btn.getAttribute('data-event-id'), 10);
+                    if (eventId) {
+                        handleReservation(eventId);
+                    }
+                }
+            });
+
+            // Exposer les fonctions globalement pour les onclick
+            window.toggleAddress = toggleAddress;
+            window.copyAddress = copyAddress;
+            window.toggleFootnote = toggleFootnote;
+
+            // Charger les événements
+            loadEvents();
+
+        })();
+    </script>
+
+</body>
+</html>
